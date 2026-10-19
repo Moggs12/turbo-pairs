@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 003
+# Kaiden’s Turbo Pairs — Build 004
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -22,8 +22,16 @@ Keyboard controls, pause with hidden cards, reduced-motion support and a remembe
 
 See docs/VALIDATION.md and docs/SCORES.md.
 
-## Build 003 visual redesign
+## Build 004 visual redesign
 
 Bright Hot Wheels blue, flame-logo branding reused by displaying a cropped view of the approved card back, red Play button, illustrated difficulty choices and colour-coded score badges. Approved image files remain unchanged. Menu records are collapsed under Our scores.
 
 Opening index.html directly from disk redirects to the online game. JavaScript module loading errors now provide a retry screen instead of leaving a loading message. Use npm start for local development.
+
+## Build 004: modes and adaptive board
+
+Choose On my own, Against the computer, or Two players. Solo uses one racer, counts turns and keeps the same racer after a mismatch. Turbo Bot remembers revealed cards and chooses using that memory only; human input is disabled during its turn. Two-player mode retains the existing rules.
+
+The board measures the space left below its controls and chooses the largest fitting grid. ResizeObserver updates it during resizing; phone landscape moves scores alongside the board. Card artwork stays at 5:7, unchanged.
+
+Records are isolated by theme and play mode. Existing two-player record keys and unfinished races remain compatible. Solo and computer records use separate mode suffixes; the active unfinished session retains its mode and AI memory.

@@ -15,3 +15,10 @@
 - Phone menu checked at 390 × 844; main Play button is visible. Records are collapsed to simplify setup.
 - Card flipping and saved-race resume checked after UI changes. All eight automated rule/asset tests still pass.
 - Direct file opening redirects to the hosted game; module-loading failures display retry guidance.
+
+## Build 004 checks
+
+- Fourteen automated tests pass, including solo completion/restoration, computer full-game simulations at all three difficulties, proof that computer move selection never reads hidden deck identities, and grid bounds across six available-space sizes.
+- Browser checked Hard mode resizing at 1280 × 590 (eight columns, cards about 97 px wide), 390 × 844 (four columns), 320 × 568 (cards over 48 px wide), and 844 × 390 landscape (eight columns, cards over 62 px wide). No vertical page overflow in these checks.
+- Browser confirmed solo mismatch/refresh keeps the same racer, computer automatic turns through completion, and mode switching shows one or two name fields appropriately.
+- Header title now uses a red badge with bold yellow lettering. Approved image masters remain unchanged.

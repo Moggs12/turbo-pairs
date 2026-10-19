@@ -20,3 +20,7 @@ Save unfinished sessions independently under `turbo-pairs:v1:session:{themeId}`.
 Global names and sound preferences may be shared. Theme records remain independent. Show each theme's leader separately; do not silently blend them into one leaderboard.
 
 Initial persistence is device/browser-local. No cross-device sync is promised. Handle unavailable storage gracefully so a game can still be played, and never report a save as successful when it failed.
+
+## Build 004 modes
+
+The original records:hot-wheels key remains two-player records. Solo and computer games use records:hot-wheels:solo and records:hot-wheels:ai respectively (all under the turbo-pairs:v1 prefix). A finished solo game increments games played, completed wins and pairs for its one participant. Mode selection is remembered with settings. The current unfinished session stores mode and revealed-card memory. Legacy sessions without mode restore as two-player games.
