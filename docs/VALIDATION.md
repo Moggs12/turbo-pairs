@@ -22,3 +22,11 @@
 - Browser checked Hard mode resizing at 1280 × 590 (eight columns, cards about 97 px wide), 390 × 844 (four columns), 320 × 568 (cards over 48 px wide), and 844 × 390 landscape (eight columns, cards over 62 px wide). No vertical page overflow in these checks.
 - Browser confirmed solo mismatch/refresh keeps the same racer, computer automatic turns through completion, and mode switching shows one or two name fields appropriately.
 - Header title now uses a red badge with bold yellow lettering. Approved image masters remain unchanged.
+
+## Build 005 checks
+
+- Fourteen rule, mode, grid and artwork tests still pass; static build and app syntax check succeed.
+- Browser checked the main menu at the actual 430 × 366 compact window: page height equals viewport height, the round start button is fully visible, and the menu fits with two name fields plus Continue and Scores.
+- Verified mode selection, scores dialog/return, starter button, existing-race replacement prompt, successful game launch and return to menu. No browser console errors.
+- Responsive CSS includes desktop, portrait phone and short landscape arrangements. The browser viewport override did not change the current tab dimensions in this run, so additional requested dimensions were not claimed as browser-verified for this menu revision.
+- No approved artwork changed. Existing gameplay and saved records remain intact.

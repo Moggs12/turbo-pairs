@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 004
+# Kaiden’s Turbo Pairs — Build 005
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -35,3 +35,9 @@ Choose On my own, Against the computer, or Two players. Solo uses one racer, cou
 The board measures the space left below its controls and chooses the largest fitting grid. ResizeObserver updates it during resizing; phone landscape moves scores alongside the board. Card artwork stays at 5:7, unchanged.
 
 Records are isolated by theme and play mode. Existing two-player record keys and unfinished races remain compatible. Solo and computer records use separate mode suffixes; the active unfinished session retains its mode and AI memory.
+
+## Build 005: one-page ignition menu
+
+The menu places an enlarged Hot Wheels flame logo across its top, removes the duplicate title and decorative card fan, and keeps the settings beside a round red metallic-rimmed LET’S START button. On portrait phones the starter sits alongside Continue and Scores beneath the settings. Scores open in a dialog instead of expanding the menu. All three modes, names and difficulty choices remain available.
+
+The reference ignition button is recreated in CSS; approved card image files are unchanged. The large logo displays a clipped view of the approved card back, with its original proportions preserved.
