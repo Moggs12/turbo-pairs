@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "Kaiden’s Turbo Pairs",
+  "short_name": "Kaiden",
+  "description": "Kaiden’s Hot Wheels matching pairs game",
+  "lang": "en-GB",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0755d9",
+  "theme_color": "#0755d9",
+  "icons": [
+    {
+      "src": "icons/kaiden-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/kaiden-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
