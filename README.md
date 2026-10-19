@@ -7,7 +7,8 @@ A family Pairs game with interchangeable Hot Wheels and Mystic Creatures themes.
 ## Agreed direction
 
 - Two players sharing one phone, tablet or computer.
-- Start with a six-pair prototype; expand to 10 and 15 pairs.
+- One-screen difficulty choices: Easy — 3 pairs / 6 cards; Medium — 6 pairs / 12 cards; Hard — 8 pairs / 16 cards.
+- Pair counts live in `src/config/game.json` so future adjustments apply to both themes.
 - Matching cards earn one point and another turn. A mismatch passes the turn.
 - Theme-specific artwork, branding, sounds and celebrations.
 - Separate player records for each theme: wins, draws, games played and pairs collected.
