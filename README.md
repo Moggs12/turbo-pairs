@@ -1,36 +1,23 @@
-# Turbo Pairs
+# Kaiden’s Turbo Pairs — Build 002
 
-A family Pairs game with interchangeable Hot Wheels and Mystic Creatures themes.
+First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
-**Build 001 — project foundation.** The playable UI has not been implemented or deployed yet.
+Choose Easy (6 cards), Medium (12), or Hard (16). Counts come from src/config/game.json. Matches score one point and keep the turn; mismatches conceal after 1.2 seconds and pass the turn.
 
-## Agreed direction
+Names, sound preference, unfinished games and lifetime records are saved in this browser. Stable player IDs and theme-specific keys allow a later girl theme. Completed game IDs prevent counting results twice. Storage failures display a warning while allowing play. No account or cross-device sync.
 
-- Two players sharing one phone, tablet or computer.
-- One-screen difficulty choices: Easy — 3 pairs / 6 cards; Medium — 6 pairs / 12 cards; Hard — 8 pairs / 16 cards.
-- Pair counts live in `src/config/game.json` so future adjustments apply to both themes.
-- Matching cards earn one point and another turn. A mismatch passes the turn.
-- Theme-specific artwork, branding, sounds and celebrations.
-- Separate player records for each theme: wins, draws, games played and pairs collected.
-- Remember names, sound preference and an unfinished game on the device.
-- Responsive web app, followed by installation and offline support.
-- Intended hosting: GitHub Pages. Hosting is not enabled by this setup.
+## Run and verify
 
-## Project layout
+Use Node.js 22 or newer. No dependency installation is required.
 
-- `src/config/`: shared settings and theme registry.
-- `public/themes/hot-wheels/`: locked Deck 001 catalogue, 26 approved fronts and the shared back.
-- `public/themes/mystic-creatures/`: integration notes for the separate artwork workstream.
-- `docs/`: requirements, score storage contract and running checklist.
+    npm test
+    npm run build
+    npm start
 
-See [Project brief](docs/PROJECT.md), [Score storage](docs/SCORES.md) and [Checklist](docs/CHECKLIST.md).
+Open the printed local address. dist/ contains the static release. Paths work under the GitHub Pages /turbo-pairs/ prefix. The deployment workflow tests and builds before publishing; Pages must use the GitHub Actions source.
 
-## Artwork baseline
+## Scope
 
-Hot Wheels Deck 001 contains 26 distinct fronts and one shared back. Each front is duplicated exactly once to create 26 pairs. Master images are 1060 × 1484 pixels (5:7). All 27 approved PNG files are imported unchanged beside `deck.json` in `public/themes/hot-wheels/`. Front `file` paths and the shared `back` path are relative to that catalogue.
+Keyboard controls, pause with hidden cards, reduced-motion support and a remembered mute toggle are included. Sounds are short synthesised cues. Recorded engine/cheer effects, offline caching and installation are future work. Full-resolution approved PNGs are preserved, so initial loading may be slower on mobile data.
 
-Mystic Creatures uses the same card proportions, top banner and bottom name placement. Its artwork is being prepared separately.
-
-## Development
-
-This commit contains configuration and planning files only. There is no build command or playable entry point yet. Build 001 implementation will add the interface, game engine and meaningful game-rule tests.
+See docs/VALIDATION.md and docs/SCORES.md.

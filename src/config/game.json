@@ -1,6 +1,6 @@
 {
-  "build": "001",
-  "status": "foundation",
+  "build": "002",
+  "status": "playable",
   "players": 2,
   "cardAspectRatio": {
     "width": 5,
