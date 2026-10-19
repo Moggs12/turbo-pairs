@@ -1,12 +1,6 @@
 {
   "build": "001",
   "status": "foundation",
-  "defaultPairs": 6,
-  "pairOptions": [
-    6,
-    10,
-    15
-  ],
   "players": 2,
   "cardAspectRatio": {
     "width": 5,
@@ -22,5 +16,23 @@
     "settingsKey": "turbo-pairs:v1:settings",
     "recordsKeyPattern": "turbo-pairs:v1:records:{themeId}",
     "sessionKeyPattern": "turbo-pairs:v1:session:{themeId}"
-  }
+  },
+  "defaultDifficulty": "easy",
+  "difficulties": [
+    {
+      "id": "easy",
+      "label": "Easy",
+      "pairs": 3
+    },
+    {
+      "id": "medium",
+      "label": "Medium",
+      "pairs": 6
+    },
+    {
+      "id": "hard",
+      "label": "Hard",
+      "pairs": 8
+    }
+  ]
 }
