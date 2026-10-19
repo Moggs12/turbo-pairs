@@ -93,7 +93,7 @@ function playCard(index,bot=false){
  game=flip(game,index);
  if(game===before)return;
  const matchId=game.matched.find(id=>!before.matched.includes(id));
- sound(matchId?'match':'flip');
+ sound('flip');if(matchId)setTimeout(()=>{if(app.querySelector('.race'))sound('match');},260);
  persist();
  updateBoard(matchId);
  if(!bot)app.querySelector(`[data-card="${index}"]`)?.focus({preventScroll:true});
