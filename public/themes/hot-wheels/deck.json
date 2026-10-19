@@ -1,0 +1,250 @@
+{
+  "version": "001",
+  "unique_fronts": 26,
+  "paired_deck_cards": 52,
+  "back": "00-card-back.png",
+  "back_dimensions": [
+    1060,
+    1484
+  ],
+  "cards": [
+    {
+      "id": "01",
+      "name": "Flame Racer",
+      "file": "01-flame-racer.png",
+      "description": "bright red low racing coupe with yellow flame decals and a broad rear spoiler; oversized black road wheels",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "02",
+      "name": "Dino Stomper",
+      "file": "02-dino-stomper.png",
+      "description": "lime green tall dinosaur monster truck, enormous black offroad tires, purple triangular roof and tail spikes, dinosaur snout bonnet with friendly teeth",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "03",
+      "name": "Shark Chomper",
+      "file": "03-shark-chomper.png",
+      "description": "blue and white shark shaped car with unmistakable large dorsal roof fin and friendly toothy shark nose",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "04",
+      "name": "Banana Buggy",
+      "file": "04-banana-buggy.png",
+      "description": "bright yellow curved banana shaped open buggy, brown banana tip ends, small black wheels",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "05",
+      "name": "Rocket Rider",
+      "file": "05-rocket-rider.png",
+      "description": "silver and orange rocket shaped car with pointed rocket nose and one giant orange rear thruster",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "06",
+      "name": "Ice Cream Cruiser",
+      "file": "06-ice-cream-cruiser.png",
+      "description": "pink and mint chunky ice cream van with a giant vanilla ice cream cone fixed to its roof",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "07",
+      "name": "Pirate Wagon",
+      "file": "07-pirate-wagon.png",
+      "description": "brown and red pirate ship shaped wheeled wagon, one clear red sail, small black wheels",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "08",
+      "name": "Rainbow Beetle",
+      "file": "08-rainbow-beetle.png",
+      "description": "round white compact beetle style car with very broad rainbow stripes across the rounded body",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "09",
+      "name": "Tiger Prowler",
+      "file": "09-tiger-prowler.png",
+      "description": "orange tiger inspired car with thick black tiger stripes and a curling tiger tail at rear",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "10",
+      "name": "UFO Roller",
+      "file": "10-ufo-roller.png",
+      "description": "purple and cyan flying saucer shaped car, round saucer rim on wheels, clear blue bubble canopy",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "11",
+      "name": "Fire Hero",
+      "file": "11-fire-hero.png",
+      "description": "bright red and white tall fire engine with a prominent yellow ladder on top",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "12",
+      "name": "Surf Bus",
+      "file": "12-surf-bus.png",
+      "description": "turquoise and cream chunky retro camper van carrying one bright orange surfboard on roof",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "13",
+      "name": "Burger Buggy",
+      "file": "13-burger-buggy.png",
+      "description": "giant tan cheeseburger shaped car with green lettuce and yellow cheese layers and sesame seed bun roof",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "14",
+      "name": "Croc Crawler",
+      "file": "14-croc-crawler.png",
+      "description": "dark green and yellow crocodile shaped long car with broad crocodile snout, short legs replaced by wheels and long crocodile tail",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "15",
+      "name": "Taxi Tot",
+      "file": "15-taxi-tot.png",
+      "description": "bright yellow very short boxy cartoon taxi with black checker stripe and TAXI roof sign",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "16",
+      "name": "Candy Cruiser",
+      "file": "16-candy-cruiser.png",
+      "description": "pink and white candy themed rounded car with one giant red white swirled lollipop standing on roof",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "17",
+      "name": "Thunder Tractor",
+      "file": "17-thunder-tractor.png",
+      "description": "blue and yellow chunky farm tractor with two enormous rear tires and tiny front tires",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "18",
+      "name": "Penguin Slider",
+      "file": "18-penguin-slider.png",
+      "description": "black and white penguin shaped egg body car with orange beak front and little black flipper sides",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "19",
+      "name": "Dragon Drifter",
+      "file": "19-dragon-drifter.png",
+      "description": "crimson and gold dragon shaped car with gold curved horns and prominent small gold dragon wings",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "20",
+      "name": "Digger Dash",
+      "file": "20-digger-dash.png",
+      "description": "bright yellow and grey chunky construction loader with a large front digging scoop",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "21",
+      "name": "Space Rover",
+      "file": "21-space-rover.png",
+      "description": "white and orange six wheeled lunar rover with small satellite dish and enclosed blue glass cabin",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "22",
+      "name": "Turtle Trekker",
+      "file": "22-turtle-trekker.png",
+      "description": "teal and green turtle shaped car with large domed patterned green shell and friendly turtle head",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "23",
+      "name": "Boot Scoot",
+      "file": "23-boot-scoot.png",
+      "description": "purple and yellow giant trainer sneaker shaped car with large yellow laces, four black wheels",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "24",
+      "name": "Popcorn Popper",
+      "file": "24-popcorn-popper.png",
+      "description": "red and white striped popcorn tub shaped car overflowing with chunky yellow white popcorn",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "25",
+      "name": "Lightning Bolt",
+      "file": "25-lightning-bolt.png",
+      "description": "electric blue and yellow very long dragster with lightning bolt shaped fins and huge rear tires",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    },
+    {
+      "id": "26",
+      "name": "Puppy Pickup",
+      "file": "26-puppy-pickup.png",
+      "description": "cream and brown puppy shaped pickup truck with large floppy brown ears and a wagging tail",
+      "width": 1060,
+      "height": 1484,
+      "ratio_5_7": true
+    }
+  ],
+  "themeId": "hot-wheels",
+  "artworkStatus": "approved",
+  "imageImportStatus": "pending",
+  "masterPack": "Kaidens-Turbo-Pairs-Deck-001.zip"
+}

@@ -1,0 +1,32 @@
+{
+  "defaultTheme": "hot-wheels",
+  "themes": [
+    {
+      "id": "hot-wheels",
+      "name": "Hot Wheels",
+      "status": "artwork-approved-import-pending",
+      "deck": "themes/hot-wheels/deck.json",
+      "palette": {
+        "primary": "#0755D9",
+        "accent": "#FFDF00",
+        "highlight": "#EF1834"
+      },
+      "soundProfile": "engines",
+      "celebration": "wiggle-bounce"
+    },
+    {
+      "id": "mystic-creatures",
+      "name": "Mystic Creatures",
+      "status": "artwork-in-progress",
+      "deck": null,
+      "palette": {
+        "primary": "#D9B7EF",
+        "accent": "#F8C8DC",
+        "highlight": "#BEE9E8"
+      },
+      "paletteStatus": "provisional",
+      "soundProfile": "magic",
+      "celebration": "sparkle-float"
+    }
+  ]
+}

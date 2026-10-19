@@ -1,0 +1,26 @@
+{
+  "build": "001",
+  "status": "foundation",
+  "defaultPairs": 6,
+  "pairOptions": [
+    6,
+    10,
+    15
+  ],
+  "players": 2,
+  "cardAspectRatio": {
+    "width": 5,
+    "height": 7
+  },
+  "rules": {
+    "pointsPerPair": 1,
+    "matchKeepsTurn": true,
+    "mismatchPassesTurn": true
+  },
+  "storage": {
+    "schemaVersion": 1,
+    "settingsKey": "turbo-pairs:v1:settings",
+    "recordsKeyPattern": "turbo-pairs:v1:records:{themeId}",
+    "sessionKeyPattern": "turbo-pairs:v1:session:{themeId}"
+  }
+}
