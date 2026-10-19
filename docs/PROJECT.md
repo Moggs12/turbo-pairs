@@ -20,6 +20,20 @@ Shuffle a random subset of distinct identities, then duplicate each selected ide
 
 A match earns one point and another turn. On a mismatch, allow time to view both cards, then conceal them and change player. Finish when every pair is collected. Award a draw when scores are equal.
 
+## Difficulty and screen fit
+
+| Mode | Pairs | Cards | Initial portrait phone layout |
+| --- | --- | --- | --- |
+| Easy | 3 | 6 | 3 columns × 2 rows |
+| Medium | 6 | 12 | 4 columns × 3 rows |
+| Hard | 8 | 16 | 4 columns × 4 rows |
+
+Easy is the default. Keep the board, scores and turn indicator on one screen without scrolling on supported phone sizes; verify the actual layout during UI testing. Preserve the 5:7 card proportions. Tablet and desktop layouts may adapt without changing the number of pairs.
+
+The single source of truth is `src/config/game.json` → `difficulties`. Each entry stores its pair count; derive the card count as pairs × 2. Both themes and future UI controls must read these settings rather than hard-code separate counts. Check the requested pair count against the selected deck's unique identities.
+
+Select a random subset of distinct identities from the chosen theme, duplicate each once, then shuffle. Difficulty changes the board size only. Save the selected difficulty ID and actual pair count with an unfinished game and completed result. Restore existing sessions using their saved pair count, so later configuration changes do not alter a game in progress. Theme records remain separate.
+
 ## Sound and motion
 
 - Flip: short card flick and smooth flip.
@@ -37,4 +51,4 @@ Hot Wheels Deck 001 is the locked baseline: 26 individual fronts, common logo he
 
 ## Release approach
 
-Use explicit build numbers. Build and test the six-pair interface first, then expand board sizes, saved records and theme integration. Add home-screen installation, offline asset caching and tested update handling after the core game is stable. GitHub Pages is the intended hosting destination; publication is a separate implementation task.
+Use explicit build numbers. Build and test all three one-screen difficulty sizes, saved records and theme integration. Add home-screen installation, offline asset caching and tested update handling after the core game is stable. GitHub Pages is the intended hosting destination; publication is a separate implementation task.
