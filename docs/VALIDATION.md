@@ -30,3 +30,14 @@
 - Verified mode selection, scores dialog/return, starter button, existing-race replacement prompt, successful game launch and return to menu. No browser console errors.
 - Responsive CSS includes desktop, portrait phone and short landscape arrangements. The browser viewport override did not change the current tab dimensions in this run, so additional requested dimensions were not claimed as browser-verified for this menu revision.
 - No approved artwork changed. Existing gameplay and saved records remain intact.
+
+
+## Build 006 validation checklist
+
+- Run `npm test`, `node --check src/app.js`, and `npm run build` on the Build 006 branch before merge; the pull-request CI workflow performs these checks.
+- Confirm card buttons retain their DOM identity between the first and second flip and during the mismatch reset; all transitions should animate instead of snapping.
+- Check two different cards flip closed after 1.2 seconds and no third card can be selected while two are showing.
+- Check a correct pair glows and stays visible; final pair remains visible before the winning screen and fanfare.
+- Test audio muted and unmuted, reload with both settings, and check that fresh sessions default on. iOS may require a tap before sound works.
+- Confirm the red-and-yellow KAIDEN’S TURBO PAIRS badge is visible under the Hot Wheels logo on a normal portrait phone, but menus still fit on short landscape displays.
+- Test iPhone portrait and landscape as well as desktop; visual/audio browser acceptance is required before release.
