@@ -19,7 +19,7 @@ A family Pairs game with interchangeable Hot Wheels and Mystic Creatures themes.
 ## Project layout
 
 - `src/config/`: shared settings and theme registry.
-- `public/themes/hot-wheels/`: locked Deck 001 catalogue; image import pending.
+- `public/themes/hot-wheels/`: locked Deck 001 catalogue, 26 approved fronts and the shared back.
 - `public/themes/mystic-creatures/`: integration notes for the separate artwork workstream.
 - `docs/`: requirements, score storage contract and running checklist.
 
@@ -27,7 +27,7 @@ See [Project brief](docs/PROJECT.md), [Score storage](docs/SCORES.md) and [Check
 
 ## Artwork baseline
 
-Hot Wheels Deck 001 contains 26 distinct fronts and one shared back. Each front is duplicated exactly once to create 26 pairs. Master images are 1060 × 1484 pixels (5:7). The approved artwork pack is maintained separately until the image-import task is complete.
+Hot Wheels Deck 001 contains 26 distinct fronts and one shared back. Each front is duplicated exactly once to create 26 pairs. Master images are 1060 × 1484 pixels (5:7). All 27 approved PNG files are imported unchanged beside `deck.json` in `public/themes/hot-wheels/`. Front `file` paths and the shared `back` path are relative to that catalogue.
 
 Mystic Creatures uses the same card proportions, top banner and bottom name placement. Its artwork is being prepared separately.
 

@@ -4,7 +4,7 @@
     {
       "id": "hot-wheels",
       "name": "Hot Wheels",
-      "status": "artwork-approved-import-pending",
+      "status": "ready",
       "deck": "themes/hot-wheels/deck.json",
       "palette": {
         "primary": "#0755D9",

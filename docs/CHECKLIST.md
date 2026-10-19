@@ -9,7 +9,7 @@
 - [x] Add approved 26-car Deck 001 catalogue.
 - [x] Record sound and animation requirements.
 - [x] Configure Easy (3 pairs), Medium (6 pairs) and Hard (8 pairs) in one shared file.
-- [ ] Import the approved Hot Wheels front/back images.
+- [x] Import all 26 approved Hot Wheels fronts and the shared back; verify exact source hashes and 5:7 dimensions.
 - [ ] Build home/setup, difficulty selector, 6/12/16-card boards and results screens.
 - [ ] Implement matching rules and turn protection.
 - [ ] Implement sounds, mute and reduced-motion behaviour.
