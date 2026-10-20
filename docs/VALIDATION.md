@@ -41,3 +41,12 @@
 - Test audio muted and unmuted, reload with both settings, and check that fresh sessions default on. iOS may require a tap before sound works.
 - Confirm the red-and-yellow KAIDEN’S TURBO PAIRS badge is visible under the Hot Wheels logo on a normal portrait phone, but menus still fit on short landscape displays.
 - Test iPhone portrait and landscape as well as desktop; visual/audio browser acceptance is required before release.
+
+
+## Build 007 mobile audio regression
+
+- Play at least three consecutive games on iPhone (use Race Again, then Back to Garage and start another race). Each should have flip, matching and victory sounds.
+- While a game is running, lock and unlock the iPhone and return from another app, tap Keep Playing, and confirm sounds resume on the next human card flip.
+- Toggle Sound Off and On. Confirm no sounds while off, sounds immediately after switching on, and the preference survives closing and reopening the app.
+- Confirm AI turns and delayed match/mismatch sounds do not produce lingering or duplicated audio after navigating away.
+- Run `npm test`, `node --check src/audio.js`, `node --check src/app.js`, and `npm run build` before deployment; verify sound on a real device as automated mocks cannot replicate all WebKit restrictions.
