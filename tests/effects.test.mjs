@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 
 const app=readFileSync('src/app.js','utf8');
 const css=readFileSync('style.css','utf8');
+const audio=readFileSync('src/audio.js','utf8');
 
 test('flips and mismatches update existing card elements, preserving CSS 3D transitions',()=>{
  const play=app.slice(app.indexOf('function playCard('),app.indexOf('function schedule()'));
@@ -17,8 +18,8 @@ test('flips and mismatches update existing card elements, preserving CSS 3D tran
 
 test('audio and artwork title badge remain optional and reduced motion is respected',()=>{
  for(const cue of ['flip','miss','match','start','finish'])
-  assert.match(app,new RegExp("case '"+cue+"'"));
- assert.match(app,/if\(!settings\.sound\)return/);
+  assert.match(audio,new RegExp("case '"+cue+"'"));
+ assert.match(app,/createSoundEngine\(window\.AudioContext \|\| window\.webkitAudioContext, \(\) => !!settings\.sound\)/);
  assert.match(app,/if\(typeof settings\.sound!=='boolean'\)settings\.sound=true/);
  assert.match(app,/class="turbo-badge"/);
  assert.match(css,/\.turbo-badge/);
