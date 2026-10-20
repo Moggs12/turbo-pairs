@@ -83,3 +83,10 @@
 - Browser selected Shark Chomper for racer 1 and Banana Buggy for racer 2; both choices survived refresh and appeared during play and on a completed two-player result. Picker exposes all 26 approved cars. No console warnings/errors.
 - After a short-window layout adjustment, the two-player menu fits 895 × 503 with document height equal to viewport height.
 - Approved PNG masters and storage keys are unchanged. Racer artwork is resolved exclusively from the approved deck, with immutable settings updates preserving unfinished sessions.
+
+## Build 013 checks
+
+- All 30 tests pass, including exact-once difficulty counts, old wins without invented difficulty history, aggregation across modes, racer isolation, and draws without win trophies. App syntax and static build pass.
+- Browser verified old earned win cups, a separate empty racer cabinet, a new Easy completion earning its cup, race records dialog, and returning to results. No console warnings/errors.
+- Cabinet scrolls inside its own panel, retaining the banner and a sticky back control. At 895 × 503 the document has no horizontal or vertical overflow; the room has no horizontal overflow.
+- Trophy cups/cabinet are code-native vector/CSS artwork; approved car masters remain untouched. Existing score and session storage keys remain unchanged.

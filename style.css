@@ -209,3 +209,40 @@ body:has(.menu) main{flex:1;min-height:0;display:flex}
  .menu:not(.results-menu) .menu-extras{gap:10px}
  .menu:not(.results-menu) .menu-secondary{min-height:38px;font-size:12px;padding:7px}
 }
+
+/* Cartoon trophy cabinet: reusable vector cups, enamel frame and deep shelves. */
+.trophy-page{grid-template-rows:min(24vw,25dvh) minmax(0,1fr)}
+.trophy-room{min-height:0;overflow:auto;padding:18px 22px 22px;background:#fffef6;border:4px solid #ffdf00;border-radius:26px;color:#083782;box-shadow:0 6px 0 #003995}
+.trophy-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px}
+.trophy-toolbar h1{font-size:clamp(25px,3vw,38px);text-shadow:0 2px 0 #b7d6fa;color:#083782;letter-spacing:-1px}
+.trophy-toolbar p{font-weight:800;font-size:14px;margin-top:6px}
+.trophy-toolbar button{flex-shrink:0;font-size:13px;min-height:40px;padding:8px 12px}
+.trophy-racers{display:flex;gap:10px;margin-bottom:16px}
+.trophy-racers button{display:flex;align-items:center;gap:9px;min-width:0;max-width:50%;padding:5px 12px;background:#edf6ff;border:3px solid #bfdcff;font-size:14px;overflow-wrap:anywhere}
+.trophy-racers button[aria-pressed="true"]{background:#fff5aa;border-color:#0755d9;box-shadow:0 3px 0 #0755d9}
+.trophy-racers img{width:26px;height:36px;object-fit:contain;border-radius:4px}
+.trophy-cabinet{border:9px solid #ed1c24;border-radius:22px;background:linear-gradient(135deg,#124b9c,#062e70);padding:14px 18px 20px;box-shadow:inset 0 0 0 4px #ffcf35,0 8px 0 #932035,0 12px 15px #00358e44;position:relative}
+.cabinet-sign{width:max-content;max-width:100%;margin:0 auto 16px;padding:8px 20px;border:3px solid #ffe892;border-radius:12px;background:#ffdf00;color:#073b8e;font-weight:1000;font-style:italic;letter-spacing:1px;text-align:center;box-shadow:0 4px 0 #b97b09}
+.cabinet-shelves{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 14px}
+.trophy-slot{min-width:0;text-align:center;padding:8px 4px 12px;border-bottom:9px solid #ffbe33;border-radius:8px;background:linear-gradient(#ffffff08,#ffffff18);box-shadow:0 5px 0 #a85c12;color:white;position:relative}
+.trophy-display{position:relative;max-width:140px;margin:auto}
+.trophy-cup{display:block;width:100%;height:114px;color:#ffd12b;filter:drop-shadow(0 3px 2px #001a54)}
+.earned .trophy-display{background:radial-gradient(ellipse,#ffdd0055,transparent 70%)}
+.locked .trophy-cup{color:#647eaa;filter:grayscale(1);opacity:.4}
+.trophy-state{display:block;font-size:10px;font-weight:1000;color:#ffdf00;letter-spacing:1px;min-height:16px}
+.trophy-slot h2{font-size:16px;letter-spacing:0;margin-top:5px;overflow-wrap:anywhere}
+.trophy-slot p{font-size:11px;margin-top:5px;line-height:1.3;color:#d7eaff}
+.trophy-progress{display:inline-block;margin-top:6px;background:#002258;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:900;color:#fff}
+.earned .trophy-progress{background:#ffdf00;color:#073b8e}
+.trophy-footnote{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px}
+.trophy-footnote p{font-size:11px;line-height:1.5;color:#42608d}
+.trophy-footnote button{min-height:38px;padding:7px 12px;font-size:12px;flex-shrink:0}
+@media(max-width:500px){.trophy-page{grid-template-rows:min(28vw,18dvh) minmax(0,1fr)}.trophy-room{padding:12px;border-radius:21px}.trophy-toolbar{align-items:start;gap:8px}.trophy-toolbar h1{font-size:25px}.trophy-toolbar p{font-size:11px}.trophy-toolbar button{font-size:11px;padding:7px}.trophy-racers{gap:7px}.trophy-racers button{font-size:12px;padding:4px 8px}.trophy-cabinet{padding:12px 8px 18px;border-width:7px}.cabinet-sign{font-size:12px;padding:7px 10px}.cabinet-shelves{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 10px}.trophy-cup{height:100px}.trophy-slot h2{font-size:14px}.trophy-slot p{font-size:10px}.trophy-footnote{align-items:start;flex-direction:column;gap:10px}}
+@media(max-height:500px){.trophy-page{grid-template-rows:64px minmax(0,1fr)}.trophy-room{padding:12px 16px}.trophy-toolbar h1{font-size:25px}}
+
+.menu.trophy-page{grid-template-rows:min(24vw,22dvh) minmax(0,1fr)}
+.trophy-toolbar>div{flex:1;min-width:0}
+.trophy-toolbar button,.trophy-footnote button{width:auto}
+.trophy-toolbar{position:sticky;top:-18px;z-index:2;background:#fffef6;padding:8px 0}
+@media(max-width:500px){.menu.trophy-page{grid-template-rows:min(28vw,18dvh) minmax(0,1fr)}.trophy-toolbar{top:-12px}}
+@media(max-height:500px){.menu.trophy-page{grid-template-rows:64px minmax(0,1fr)}.trophy-toolbar{top:-12px}}

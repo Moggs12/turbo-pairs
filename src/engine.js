@@ -15,7 +15,7 @@ export function settle(game){return game.revealed.length===2?{...game,revealed:[
 export function applyResult(records,game){
  if(game.status!=='complete'||records.completed?.includes(game.id))return records;
  const next=JSON.parse(JSON.stringify(records));next.completed=[...(next.completed||[]),game.id];next.players ||= {};
- game.players.forEach((p,i)=>{const r=next.players[p.id]||{gamesPlayed:0,wins:0,losses:0,draws:0,pairsCollected:0};r.name=p.name;r.gamesPlayed++;r.pairsCollected+=game.scores[i];r[game.mode==='solo'?'wins':game.scores[i]===game.scores[1-i]?'draws':game.scores[i]>game.scores[1-i]?'wins':'losses']++;next.players[p.id]=r;});return next;
+ game.players.forEach((p,i)=>{const r=next.players[p.id]||{gamesPlayed:0,wins:0,losses:0,draws:0,pairsCollected:0};r.name=p.name;r.gamesPlayed++;r.difficulties ||= {};if(['easy','medium','hard'].includes(game.difficultyId))r.difficulties[game.difficultyId]=(r.difficulties[game.difficultyId]||0)+1;r.pairsCollected+=game.scores[i];r[game.mode==='solo'?'wins':game.scores[i]===game.scores[1-i]?'draws':game.scores[i]>game.scores[1-i]?'wins':'losses']++;next.players[p.id]=r;});return next;
 }
 export function validSession(g,cards){
  if(!g||g.themeId!=='hot-wheels'||!['playing','complete'].includes(g.status)||typeof g.id!=='string'||!Number.isInteger(g.pairCount)||g.pairCount<1||g.pairCount>cards.length||!Array.isArray(g.deck)||g.deck.length!==g.pairCount*2)return false;
