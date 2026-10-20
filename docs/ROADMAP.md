@@ -3,7 +3,7 @@
 Agreed improvement order. Keep the approved Hot Wheels artwork and one-page main menu.
 
 1. Starting peek and race countdown — complete (Build 010). Briefly show the cars, turn them over, then 3, 2, 1, GO.
-2. Choose your racer — car avatars alongside player names.
+2. Choose your racer — complete (Build 012). Choose from 26 approved cars, save each racer’s choice, and show it during play and results.
 3. Trophy garage — badges for milestones, streaks and personal achievements.
 4. Separate computer skill from board size — friendly/challenging bot independently of 6/12/16 cards.
 5. Personal bests — solo fewest-turn records and celebrations, separately per difficulty.

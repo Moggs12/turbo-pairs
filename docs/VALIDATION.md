@@ -76,3 +76,10 @@
 - Countdown now overlays only the board, after the sneak peek ends. Large yellow numbers and GO use a dark backdrop, red shadow and a reduced-motion-aware entrance.
 - Browser verified the overlay exactly matches board bounds at 895 × 503, with a 161 px number. Overlay clears and all cards unlock after GO. Pause/menu cancellation removes the overlay.
 - All 25 tests, app syntax and static build pass; no approved art or record keys changed.
+
+## Build 012 checks
+
+- All 27 tests pass, including migration of missing/invalid avatar ids and independent choice/session round trips. Syntax and build pass.
+- Browser selected Shark Chomper for racer 1 and Banana Buggy for racer 2; both choices survived refresh and appeared during play and on a completed two-player result. Picker exposes all 26 approved cars. No console warnings/errors.
+- After a short-window layout adjustment, the two-player menu fits 895 × 503 with document height equal to viewport height.
+- Approved PNG masters and storage keys are unchanged. Racer artwork is resolved exclusively from the approved deck, with immutable settings updates preserving unfinished sessions.

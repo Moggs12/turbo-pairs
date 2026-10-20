@@ -71,3 +71,7 @@ The main logo now carries the red-and-yellow Kaiden’s Turbo Pairs badge inside
 New races briefly reveal the cars (3 seconds on Easy, 2.5 seconds otherwise), then conceal them before a 3–2–1–GO countdown. Cards stay locked until GO finishes. Pause/menu cancel the sequence; resumed races never get another preview. The approved improvement list, including browsing all 26 cards, lives in docs/ROADMAP.md.
 
 Build 011 makes 3–2–1–GO a large centred overlay above the playing cards. The preview stays unobstructed; pause/menu remove the overlay and normal play unlocks after GO.
+
+## Build 012: choose your racer
+
+Tap the small car beside a name to choose any of the 26 approved fronts. Each racer’s choice is saved on this device and appears in the scoreboard and results. The picker preserves typed names and difficulty, supports Escape/close and restores focus. Existing races keep their original racer choices. Legacy saves receive safe default cars.
