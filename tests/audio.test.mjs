@@ -105,3 +105,8 @@ test('countdown has three short tones and a longer GO; swoosh and rev use noise'
  const before=ctx.starts;audio.play('flip');assert.equal(ctx.starts,before+1);
  audio.play('match');assert.equal(ctx.starts,before+5);
 });
+
+test('playful ignition starts immediately and finishes in under a second',()=>{
+ FakeContext.instances=[];const audio=createSoundEngine(FakeContext);audio.play('ignition');
+ const ctx=FakeContext.instances[0];assert.equal(ctx.starts,5);assert.ok(Math.max(...ctx.stops)<1);
+});

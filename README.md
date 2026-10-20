@@ -87,3 +87,7 @@ Every cup can be collected repeatedly. Win cups award every 1/5/10 wins; difficu
 ## Build 015: racing sounds
 
 Card flips use a short filtered-noise swoosh, pairs use a layered engine rev, and race completion uses a short major-key fanfare. Countdown numbers each play a short tone, followed by a longer, higher GO tone. Effects are generated with Web Audio, with no downloaded audio. The audio context is unlocked on the start tap for iOS; mute, interruption recovery and unavailable-audio fallback remain supported.
+
+## Build 016: playful ignition
+
+The red start/replay button plays a short toy-car ignition: three soft starter chugs and a rising vroom, under one second. It starts immediately from the tap and uses the existing Web Audio engine, mute and interruption handling. Other effects are unchanged. No external recording is bundled.

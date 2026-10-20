@@ -102,3 +102,9 @@
 - All 33 tests pass, including noise-source effects, three short countdown tones versus a longer GO tone, mute, suspended/interrupted audio recovery and stale resume cancellation. Static build succeeds.
 - Browser completed a sound-enabled solo race through countdown, three matching pairs and results without console errors or warnings. This exercises playback paths, not an independent listening/recording assessment.
 - Audio unlock runs on the initial start gesture; pause resets active sound and delayed revs check the race identity and paused/hidden state. Approved art, score and trophy data are unchanged.
+
+## Build 016 checks
+
+- All 34 tests pass, including an immediate playful ignition cue lasting under one second. App syntax and build pass.
+- The proposed real-car recording was rejected before publication; it is not included. Ignition uses three soft chugs and two rising harmonics through the existing audio engine. Other sound definitions are unchanged.
+- Ignition is invoked after the countdown audio unlock, on the same start gesture, so a suspended context cannot cancel the new cue.

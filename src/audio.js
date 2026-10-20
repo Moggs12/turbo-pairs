@@ -66,6 +66,12 @@ export function createSoundEngine(AudioContextClass, enabled = () => true) {
      oscillator.connect(filter);filter.connect(gain);gain.connect(ctx.destination);oscillator.start(now);oscillator.stop(now+.86);
     });
     noise(.82,.045,250,1100);break;
+   case 'ignition':
+    // A toy-car starter: quick soft chugs, then a cheerful rising vroom.
+    [0,.07,.14].forEach((delay,i)=>tone(delay,140+i*20,.055,'triangle',.055,105+i*15));
+    tone(.2,75,.65,'sawtooth',.025,260);
+    tone(.2,150,.65,'triangle',.045,520);
+    break;
    case 'countdown': tone(0,660,.11,'triangle',.08);break;
    case 'start': tone(0,990,.58,'triangle',.09);break;
    case 'finish':
