@@ -65,3 +65,7 @@ Kaidens Turbo Cards sits in the blue pocket beneath the right side of the main f
 ## Build 009: shared menu and results styling
 
 The main logo now carries the red-and-yellow Kaiden’s Turbo Pairs badge inside its existing blue pocket. Results reuse that same banner, cream/yellow panel, round ignition replay button and secondary controls. Lifetime trophies open in a dialog from either screen.
+
+## Build 010: starting-grid peek
+
+New races briefly reveal the cars (3 seconds on Easy, 2.5 seconds otherwise), then conceal them before a 3–2–1–GO countdown. Cards stay locked until GO finishes. Pause/menu cancel the sequence; resumed races never get another preview. The approved improvement list, including browsing all 26 cards, lives in docs/ROADMAP.md.

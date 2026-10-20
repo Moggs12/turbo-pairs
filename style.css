@@ -153,3 +153,7 @@ body:has(.menu) main{flex:1;min-height:0;display:flex}
 @media(max-height:500px){.results-panel{grid-template-columns:minmax(0,1fr) 140px;grid-template-rows:auto}.result-summary{gap:7px}.result-summary h1{font-size:27px}.results-panel .victory-confetti{font-size:20px;height:24px}.result-summary .player{font-size:13px;padding:6px}.result-summary .player small{font-size:9px}.results-panel .menu-launch{flex-direction:column;gap:12px}.results-panel .menu-extras{width:100%;min-width:0}.results-panel .engine-start{--diameter:106px}}
 
 @media(min-width:501px) and (max-height:700px){.results-menu{grid-template-rows:min(25vw,30dvh) minmax(0,1fr)}.results-panel{padding:12px 16px;grid-template-columns:minmax(0,1fr) 160px;gap:18px}.results-panel .engine-start{--diameter:130px}.results-panel .menu-launch{gap:14px}.results-panel .menu-extras{gap:10px}.results-panel .menu-secondary{min-height:38px;font-size:12px;padding:7px}.result-summary{gap:9px}.result-summary h1{font-size:30px}}
+
+/* The start sequence uses the existing status banner, keeping cars unobstructed. */
+.starting-grid .turn{min-width:min(320px,90%);text-align:center;background:#ffdf00;color:#083782}
+.starting-grid .card:disabled{opacity:1}

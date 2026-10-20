@@ -63,3 +63,10 @@
 - Browser completed two-player and solo Easy races, verified accurate scores, and opened the results trophies dialog with a Back to results control.
 - Adjusted result layout after finding short-window overflow; final solo results fit 895 × 503 with document height equal to viewport height. Main and result banner use one shared renderer.
 - Approved PNG artwork and score storage keys are unchanged.
+
+## Build 010 checks
+
+- All 25 existing rule/audio/asset/layout tests pass; app syntax and build pass.
+- Browser verified the initial six face-up disabled cards, concealed disabled cards during countdown, normal selection after GO, and refresh/Continue without another preview.
+- Pausing during the preview cancels it, conceals the cards, and resumes normal play. No console warnings/errors.
+- No new artwork, score schema, or AI memory changes.

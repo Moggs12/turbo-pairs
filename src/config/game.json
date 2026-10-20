@@ -1,5 +1,5 @@
 {
-  "build": "009",
+  "build": "010",
   "status": "playable",
   "cardAspectRatio": {
     "width": 5,
@@ -22,17 +22,20 @@
       "id": "easy",
       "label": "Easy",
       "pairs": 3,
-      "computerMemoryRecall": 0.25
+      "computerMemoryRecall": 0.25,
+      "previewMs": 3000
     },
     {
       "id": "medium",
       "label": "Medium",
-      "pairs": 6
+      "pairs": 6,
+      "previewMs": 2500
     },
     {
       "id": "hard",
       "label": "Hard",
-      "pairs": 8
+      "pairs": 8,
+      "previewMs": 2500
     }
   ],
   "maxPlayers": 2,
