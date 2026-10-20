@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 005
+# Kaiden’s Turbo Pairs — Build 006
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -41,3 +41,12 @@ Records are isolated by theme and play mode. Existing two-player record keys and
 The menu places an enlarged Hot Wheels flame logo across its top, removes the duplicate title and decorative card fan, and keeps the settings beside a round red metallic-rimmed LET’S START button. On portrait phones the starter sits alongside Continue and Scores beneath the settings. Scores open in a dialog instead of expanding the menu. All three modes, names and difficulty choices remain available.
 
 The reference ignition button is recreated in CSS; approved card image files are unchanged. The large logo displays a clipped view of the approved card back, with its original proportions preserved.
+
+
+## Build 006: Flip animation, racing sounds, and Turbo Pairs badge
+
+The Home screen again includes the red-and-yellow KAIDEN’S TURBO PAIRS badge below the Hot Wheels logo. Gameplay updates existing card buttons in place, so 3D flipping can animate smoothly both ways rather than restarting on every move. A found pair gets a brief green highlight; a completed race displays celebratory icons after the last pair has been revealed.
+
+Original Web Audio cues include a short whoosh for every flip, a subdued mismatch cue when cards turn back, a bright matching chime, a starter-engine flourish, and a victory fanfare. Sound preference remains device-local and the existing mute button controls every cue. Sound is enabled by default only when no saved preference exists; previously muted devices remain muted. Web Audio starts after user interaction, following mobile autoplay restrictions.
+
+Cards and the approved image deck are not altered. Reduced-motion preferences disable visual animations, and the small landscape menu hides the supplementary title badge when space is very limited.
