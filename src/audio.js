@@ -42,16 +42,38 @@ export function createSoundEngine(AudioContextClass, enabled = () => true) {
    oscillator.start(start);
    oscillator.stop(end + .01);
   };
+  const noise=(duration,volume,from,to)=>{
+   const buffer=ctx.createBuffer(1,Math.ceil(ctx.sampleRate*duration),ctx.sampleRate),data=buffer.getChannelData(0);
+   for(let i=0;i<data.length;i++)data[i]=Math.random()*2-1;
+   const source=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();
+   source.buffer=buffer;filter.type='bandpass';filter.Q.value=.7;
+   filter.frequency.setValueAtTime(from,now);filter.frequency.exponentialRampToValueAtTime(to,now+duration);
+   gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(volume,now+.035);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+   source.connect(filter);filter.connect(gain);gain.connect(ctx.destination);source.start(now);source.stop(now+duration+.01);
+  };
   switch (type) {
-   case 'flip': tone(0, 550, .13, 'triangle', .04, 210); break;
-   case 'miss': tone(0, 310, .14, 'triangle', .038, 190); tone(.09, 230, .16, 'sine', .025, 150); break;
-   case 'match': tone(0, 523, .16, 'sine', .065); tone(.12, 659, .18, 'sine', .065); tone(.27, 784, .28, 'triangle', .07); break;
-   case 'start': tone(0, 110, .38, 'sawtooth', .04, 360); tone(.31, 520, .16, 'triangle', .04, 780); break;
+   case 'flip': noise(.23,.24,2800,500); break;
+   case 'miss': noise(.22,.14,1800,380); break;
+   case 'match':
+    // Low engine harmonics climb together, then drop as the throttle lifts.
+    [1,2,3].forEach((harmonic)=>{
+     const oscillator=ctx.createOscillator(),gain=ctx.createGain(),filter=ctx.createBiquadFilter();
+     oscillator.type='sawtooth';oscillator.frequency.setValueAtTime(48*harmonic,now);
+     oscillator.frequency.exponentialRampToValueAtTime(155*harmonic,now+.48);
+     oscillator.frequency.exponentialRampToValueAtTime(65*harmonic,now+.82);
+     filter.type='lowpass';filter.frequency.setValueAtTime(450,now);filter.frequency.exponentialRampToValueAtTime(2200,now+.48);filter.frequency.exponentialRampToValueAtTime(500,now+.82);
+     gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.065/harmonic,now+.06);gain.gain.exponentialRampToValueAtTime(.0001,now+.84);
+     oscillator.connect(filter);filter.connect(gain);gain.connect(ctx.destination);oscillator.start(now);oscillator.stop(now+.86);
+    });
+    noise(.82,.045,250,1100);break;
+   case 'countdown': tone(0,660,.11,'triangle',.08);break;
+   case 'start': tone(0,990,.58,'triangle',.09);break;
    case 'finish':
-    tone(0, 130, .55, 'sawtooth', .027, 310);
-    [[0, 523, .18], [.17, 659, .18], [.34, 784, .18], [.51, 1047, .48], [.68, 784, .16], [.85, 1047, .54]]
-     .forEach(([delay, frequency, duration]) => tone(delay, frequency, duration, 'triangle', .065));
-    break;
+    // A short major-key brass-style fanfare, ending on a bright held note.
+    [[0,523,.13],[.16,659,.13],[.32,784,.17],[.52,1047,.5]].forEach(([delay,frequency,duration])=>{
+     tone(delay,frequency,duration,'triangle',.075);
+     tone(delay,frequency*1.5,duration,'sawtooth',.018);
+    });break;
   }
  }
 

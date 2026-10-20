@@ -96,3 +96,9 @@
 - All 32 tests, syntax and static build pass. Tests cover repeated thresholds beyond the first cup and stable recalculation without extra awards.
 - Browser verified 7 Victory cups, 1 Five-star cup and 1 Easy cup from existing local records (9 total), with next targets of 8 wins, 10 wins and 2 Easy completions.
 - No new storage or artwork; existing progress is retained.
+
+## Build 015 checks
+
+- All 33 tests pass, including noise-source effects, three short countdown tones versus a longer GO tone, mute, suspended/interrupted audio recovery and stale resume cancellation. Static build succeeds.
+- Browser completed a sound-enabled solo race through countdown, three matching pairs and results without console errors or warnings. This exercises playback paths, not an independent listening/recording assessment.
+- Audio unlock runs on the initial start gesture; pause resets active sound and delayed revs check the race identity and paused/hidden state. Approved art, score and trophy data are unchanged.

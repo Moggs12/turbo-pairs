@@ -6,12 +6,15 @@ class FakeContext {
  static instances = [];
  constructor(){
   this.state = 'running'; this.currentTime = 0; this.destination = {};
-  this.starts = 0; this.resumes = 0; this.closed = false;
+  this.sampleRate=8000;this.stops=[];this.starts = 0; this.resumes = 0; this.closed = false;
   FakeContext.instances.push(this);
  }
+ createBuffer(channels,length){return {getChannelData:()=>new Float32Array(length)};}
+ createBufferSource(){return {connect(){},start:()=>{this.starts++;},stop:t=>this.stops.push(t)};}
+ createBiquadFilter(){return {Q:{value:0},frequency:{setValueAtTime(){},exponentialRampToValueAtTime(){}},connect(){}};}
  createOscillator(){
   return {type:'sine',frequency:{setValueAtTime(){},exponentialRampToValueAtTime(){}},
-   connect(){},start:()=>{this.starts++;},stop(){}};
+   connect(){},start:()=>{this.starts++;},stop:t=>this.stops.push(t)};
  }
  createGain(){
   return {gain:{setValueAtTime(){},exponentialRampToValueAtTime(){}},connect(){}};
@@ -25,12 +28,12 @@ test('sound keeps working through multiple complete races and context restarts',
  const audio=createSoundEngine(FakeContext);
  audio.play('start');audio.play('flip');audio.play('match');audio.play('finish');
  const first=FakeContext.instances[0];
- assert.equal(first.starts,2+1+3+7);
+ assert.equal(first.starts,1+1+4+8);
  audio.reset();audio.play('start');audio.play('flip');
  const second=FakeContext.instances[1];
  assert.notEqual(second,first);
  assert.equal(first.closed,true);
- assert.equal(second.starts,3);
+ assert.equal(second.starts,2);
 });
 
 test('WebKit interrupted and closed contexts are replaced before the next sound',()=>{
@@ -41,7 +44,7 @@ test('WebKit interrupted and closed contexts are replaced before the next sound'
  first.state='interrupted';
  audio.play('match');
  assert.equal(FakeContext.instances.length,2);
- assert.equal(FakeContext.instances[1].starts,3);
+ assert.equal(FakeContext.instances[1].starts,4);
  FakeContext.instances[1].state='closed';
  audio.play('flip');
  assert.equal(FakeContext.instances.length,3);
@@ -57,7 +60,7 @@ test('suspended contexts resume on the next tap',async()=>{
  audio.play('match');
  await Promise.resolve();
  assert.equal(ctx.resumes,1);
- assert.equal(ctx.starts,4);
+ assert.equal(ctx.starts,5);
 });
 
 test('mute persists outside the sound engine and prevents all cues',()=>{
@@ -69,7 +72,7 @@ test('mute persists outside the sound engine and prevents all cues',()=>{
  enabled=false;audio.reset();audio.play('finish');
  assert.equal(FakeContext.instances.length,1);
  enabled=true;audio.play('finish');
- assert.equal(FakeContext.instances[1].starts,7);
+ assert.equal(FakeContext.instances[1].starts,8);
 });
 
 test('stale, delayed resume does not play old sounds in a new race',async()=>{
@@ -92,4 +95,13 @@ test('stale, delayed resume does not play old sounds in a new race',async()=>{
 test('audio gracefully skips playback when Web Audio is unavailable',()=>{
  const audio=createSoundEngine(null);
  assert.doesNotThrow(()=>{audio.play('flip');audio.wake();audio.reset();});
+});
+
+test('countdown has three short tones and a longer GO; swoosh and rev use noise',()=>{
+ FakeContext.instances=[];const audio=createSoundEngine(FakeContext);
+ audio.play('countdown');audio.play('countdown');audio.play('countdown');audio.play('start');
+ const ctx=FakeContext.instances[0];assert.equal(ctx.starts,4);
+ assert.deepEqual(ctx.stops.slice(0,3),[.12,.12,.12]);assert.ok(ctx.stops[3]>.5);
+ const before=ctx.starts;audio.play('flip');assert.equal(ctx.starts,before+1);
+ audio.play('match');assert.equal(ctx.starts,before+5);
 });

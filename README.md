@@ -83,3 +83,7 @@ The Trophy garage button opens a separate screen with the shared Hot Wheels bann
 ## Build 014: repeatable trophies
 
 Every cup can be collected repeatedly. Win cups award every 1/5/10 wins; difficulty cups award for each completed game at that level. Each shelf shows quantity earned and lifetime progress toward the next threshold. Cabinet totals sum all collected cups instead of stopping at six. Existing records calculate counts automatically; reopening or refreshing never awards extras.
+
+## Build 015: racing sounds
+
+Card flips use a short filtered-noise swoosh, pairs use a layered engine rev, and race completion uses a short major-key fanfare. Countdown numbers each play a short tone, followed by a longer, higher GO tone. Effects are generated with Web Audio, with no downloaded audio. The audio context is unlocked on the start tap for iOS; mute, interruption recovery and unavailable-audio fallback remain supported.

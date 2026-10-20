@@ -62,7 +62,7 @@ function scoreHtml(){return `<div class="scores">${game.players.map((p,i)=>`<div
 function board(){cancelCountdown();boardObserver.disconnect();if(!document.querySelector(".race"))window.scrollTo(0,0);paused=false;const difficulty=config.difficulties.find(d=>d.id===game.difficultyId);app.innerHTML=`<section class="race"><div class="racebar"><h2>${esc(difficulty?.label||'Custom')} race <span class="eyebrow">${modeLabels[game.mode||'two']}</span></h2><div class="actions"><button id="pause" class="quiet">Ⅱ Pause</button><button id="garage" class="quiet">⌂ Menu</button></div></div>${scoreHtml()}<p class="turn" role="status" aria-live="polite">${game.revealed.length===2?'Same cars? Let’s see…':game.mode==='ai'&&game.active===1?'Turbo Bot is thinking…':`${esc(game.players[game.active].name)}, your turn!`}</p><div class="board-space"><div class="board ${game.pairCount===3?'easy':game.pairCount===6?'medium':'hard'}" aria-label="Memory cards">${game.deck.map((c,i)=>{const matched=game.matched.includes(c.id),open=matched||game.revealed.includes(i);return `<button class="card ${open?'open':''} ${matched?'matched':''}" data-card="${i}" aria-label="${open?esc(c.name)+(matched?', matched':''): `Face-down card ${i+1}`}" ${matched||(game.mode==='ai'&&game.active===1)?'disabled':''}><span class="inner"><img src="${base+deck.back}" alt="" draggable="false"><img class="front" src="${base+c.file}" alt="" draggable="false"></span></button>`;}).join('')}</div></div><p class="race-note"><span class="progress-track"><span style="width:${game.matched.length/game.pairCount*100}%"></span></span><span class="pair-count">⭐ ${game.matched.length} / ${game.pairCount} pairs found</span></p></section>`;
  fitBoard();boardObserver.observe(document.querySelector('.board-space'));
  app.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>playCard(Number(b.dataset.card)));
- $('#pause').onclick=()=>{cancelCountdown();updateBoard();if(game.status==='complete'){finish();return;}clearTimeout(timer);paused=true;overlay('Pit stop','A little break. Ready to play again?',[{label:'▶ Keep playing',action:()=>{board();schedule();}}]);};$('#garage').onclick=home;
+ $('#pause').onclick=()=>{cancelCountdown();audioEngine.reset();updateBoard();if(game.status==='complete'){finish();return;}clearTimeout(timer);paused=true;overlay('Pit stop','A little break. Ready to play again?',[{label:'▶ Keep playing',action:()=>{board();schedule();}}]);};$('#garage').onclick=home;
 }
 // Keep card nodes mounted while flipping; replacing them cancels CSS transitions.
 function updateBoard(newMatch){
@@ -92,7 +92,7 @@ function updateBoard(newMatch){
 }
 // A fresh race gets one preview; resuming never grants an extra peek.
 function startCountdown(){
- cancelCountdown();introActive=true;
+ cancelCountdown();audioEngine.wake();introActive=true;
  const race=app.querySelector('.race'),turn=race.querySelector('.turn');
  race.classList.add('starting-grid');
  race.querySelectorAll('[data-card]').forEach(button=>{
@@ -116,7 +116,7 @@ function startCountdown(){
    if(count===0){
     sound('start');
     introTimer=setTimeout(()=>{cancelCountdown();race.classList.remove('starting-grid');updateBoard();schedule();},650);
-   }else{count--;introTimer=setTimeout(tick,850);}
+   }else{sound('countdown');count--;introTimer=setTimeout(tick,850);}
   };
   // Let the cards finish turning face down before the countdown.
   introTimer=setTimeout(tick,500);
@@ -128,7 +128,7 @@ function playCard(index,bot=false){
  game=flip(game,index);
  if(game===before)return;
  const matchId=game.matched.find(id=>!before.matched.includes(id));
- sound('flip');if(matchId)setTimeout(()=>{if(app.querySelector('.race'))sound('match');},260);
+ sound('flip');if(matchId){const raceId=game.id;setTimeout(()=>{if(!paused&&game?.id===raceId&&app.querySelector('.race')&&!document.hidden)sound('match');},260);}
  persist();
  updateBoard(matchId);
  if(!bot)app.querySelector(`[data-card="${index}"]`)?.focus({preventScroll:true});
