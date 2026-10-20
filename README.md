@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 006
+# Kaiden’s Turbo Pairs — Build 007
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -50,3 +50,10 @@ The Home screen again includes the red-and-yellow KAIDEN’S TURBO PAIRS badge b
 Original Web Audio cues include a short whoosh for every flip, a subdued mismatch cue when cards turn back, a bright matching chime, a starter-engine flourish, and a victory fanfare. Sound preference remains device-local and the existing mute button controls every cue. Sound is enabled by default only when no saved preference exists; previously muted devices remain muted. Web Audio starts after user interaction, following mobile autoplay restrictions.
 
 Cards and the approved image deck are not altered. Reduced-motion preferences disable visual animations, and the small landscape menu hides the supplementary title badge when space is very limited.
+
+
+## Build 007: Reliable sound between games on iPhone
+
+The sound synthesizer now has its own reusable, testable module. It detects WebKit AudioContexts left in an interrupted or closed state, creates a fresh one, and resumes suspended contexts directly from user interaction. Starting another game and switching Sound On/Off resets the stale audio context. Hiding the app closes its context so it can be recreated after iOS app switching. Race Again starts a new engine cue, while mute preferences and lifetime records are unchanged.
+
+Audio recovery is covered by automated tests simulating a second game, interrupted contexts, suspended playback, muted output, failed/stale asynchronous resume, and unavailable Web Audio. Device testing on an actual iPhone remains necessary to confirm the root cause.
