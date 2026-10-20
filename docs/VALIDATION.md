@@ -115,3 +115,10 @@
 - SHA-256 confirms preview K, bundled source MP3 and built MP3 are identical (c73e532fbc9f8aafcb6e72f2d5088c78f818c927f75db812d36cc438cf5fec70). Preview decoding verified exactly 1.5 seconds.
 - Browser ran a sound-enabled start into the sneak peek with no console errors/warnings. Subjective choice was made by the user using the K audition.
 - Audio and credits are copied by the build. Other DSP sound definitions, approved art, scores and trophies are unchanged.
+
+## Build 018 checks
+
+- All 37 tests, app syntax and static build pass. New tests cover reaching all 26 cards, wrapping both ways, horizontal swipe direction and rejecting small/vertical gestures. Physical touch-device gestures were not independently exercised in this desktop browser run.
+- Browser verified previous/next and keyboard navigation, 26-to-1 wrapping, selecting Banana Buggy, refresh persistence, and Large cards opening at that avatar. No console warnings/errors.
+- After changing the next-race avatar, Continue retained the original Shark Chomper avatar, 0 turns and 0 pairs in the existing session.
+- Viewer and menu fit 895 × 503 without document scrolling; the full 5:7 artwork is contained without cropping. No approved image masters or score/storage keys changed.

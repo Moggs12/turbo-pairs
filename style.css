@@ -246,3 +246,27 @@ body:has(.menu) main{flex:1;min-height:0;display:flex}
 .trophy-toolbar{position:sticky;top:-18px;z-index:2;background:#fffef6;padding:8px 0}
 @media(max-width:500px){.menu.trophy-page{grid-template-rows:min(28vw,18dvh) minmax(0,1fr)}.trophy-toolbar{top:-12px}}
 @media(max-height:500px){.menu.trophy-page{grid-template-rows:64px minmax(0,1fr)}.trophy-toolbar{top:-12px}}
+
+/* A full-art collection viewer, independent of the unfinished race. */
+.menu.collection-page{grid-template-rows:min(24vw,20dvh) minmax(0,1fr)}
+.menu-banner-wrap{min-height:0;display:flex;justify-content:center}.menu-banner-wrap>.menu-banner{width:100%;height:100%}
+.collection-panel{min-height:0;background:#fffef6;border:4px solid #ffdf00;border-radius:26px;color:#083782;padding:14px 20px;box-shadow:0 6px 0 #003995;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;gap:10px}
+.collection-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.collection-toolbar>div{min-width:0}
+.collection-toolbar h1{font-size:clamp(24px,3vw,36px);color:#083782;text-shadow:0 2px 0 #bfdcff;letter-spacing:-1px}
+.collection-toolbar p{font-size:12px;font-weight:800;margin-top:4px}
+.collection-toolbar button{width:auto;min-height:38px;font-size:12px;padding:7px 12px;flex-shrink:0}
+.collection-stage{min-height:0;min-width:0;display:grid;grid-template-columns:52px minmax(0,1fr) 52px;gap:12px;align-items:center;touch-action:pan-y pinch-zoom;background:radial-gradient(ellipse,#badcff 0,transparent 70%);border-radius:16px}
+.collection-card{width:100%;height:100%;min-height:0;object-fit:contain;filter:drop-shadow(0 5px 4px #00358e66);user-select:none;-webkit-user-select:none}
+.collection-arrow{padding:0;width:52px;height:58px;line-height:40px;font-size:50px;min-height:44px}
+.collection-caption{text-align:center}.collection-caption h2{font-size:23px;letter-spacing:0}.collection-caption p{font-size:13px;margin-top:3px;font-weight:800}
+.collection-choose{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 12px}
+.collection-racers{display:flex;gap:6px;max-width:100%}
+.collection-racers button{padding:7px 12px;font-size:12px;min-height:36px;background:#eaf4ff;border:2px solid #bfdcff;overflow-wrap:anywhere}
+.collection-racers button[aria-pressed="true"]{background:#fff5aa;border-color:#0755d9}
+.collection-choose>.menu-secondary{width:auto;padding:7px 12px;min-height:38px;font-size:13px}
+.collection-choose>p{flex-basis:100%;min-height:16px;text-align:center;font-size:11px;font-weight:800}
+.collection-choose>button:disabled{opacity:1;color:#23633d;border-color:#8ddca9;background:#e6ffec}
+@media(max-width:500px){.menu.collection-page{grid-template-rows:min(28vw,17dvh) minmax(0,1fr)}.collection-panel{padding:12px;gap:8px;border-radius:21px}.collection-toolbar h1{font-size:23px}.collection-toolbar p{font-size:10px}.collection-toolbar button{font-size:10px;padding:5px 8px}.collection-stage{grid-template-columns:40px minmax(0,1fr) 40px;gap:6px}.collection-arrow{width:40px;height:48px;font-size:40px}.collection-caption h2{font-size:20px}.collection-racers button{max-width:120px}.collection-choose{gap:6px}.collection-choose>.menu-secondary{font-size:12px}}
+@media(max-height:600px) and (min-width:501px){.menu.collection-page{grid-template-rows:64px minmax(0,1fr)}.collection-panel{grid-template-columns:minmax(0,1fr) 230px;grid-template-rows:auto minmax(0,1fr) auto;gap:10px 20px;padding:12px 18px}.collection-toolbar{grid-column:1/-1}.collection-stage{grid-column:1;grid-row:2/4}.collection-caption{grid-column:2;align-self:end}.collection-choose{grid-column:2;align-self:start;flex-direction:column}.collection-racers{flex-wrap:wrap;justify-content:center}.collection-toolbar h1{font-size:25px}.collection-choose>p{flex-basis:auto}.collection-choose>.menu-secondary{width:100%}.collection-caption h2{font-size:23px}}
+.menu:not(.results-menu) .menu-extras{gap:8px}

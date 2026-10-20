@@ -8,7 +8,7 @@ Agreed improvement order. Keep the approved Hot Wheels artwork and one-page main
 4. Separate computer skill from board size — friendly/challenging bot independently of 6/12/16 cards.
 5. Personal bests — solo fewest-turn records and celebrations, separately per difficulty.
 6. Sound choices — racing effects complete (Build 015): swoosh, pair rev, finish fanfare and countdown tones. Separate engine/effect controls remain future work; master mute remains available.
-7. Kaiden’s Garage (browse cards) — a main-menu button to explore all 26 approved car fronts, swipe or use previous/next controls, see each car’s name and return without replacing an unfinished race. No new artwork or unlocking requirement.
+7. Kaiden’s Garage (browse cards) — complete (Build 018). Full-art viewer with all 26 cards, names/counter, swipe/arrows/keyboard, per-racer avatar selection and safe return to an unfinished race. Also opens from the quick avatar picker.
 
 ## Delivery notes
 

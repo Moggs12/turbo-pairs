@@ -95,3 +95,7 @@ The red start/replay button plays a short toy-car ignition: three soft starter c
 ## Build 017: selected K vroom
 
 The red start/replay button now plays the approved 1.5-second K audition, bundled locally and byte-for-byte identical to the preview. It replaces the previous synthesised ignition only. Mute, pause, menu and backgrounding stop playback; blocked audio never prevents a race. Source/edit/CC0 notes are in public/audio/CREDITS.md. Other game sounds are unchanged.
+
+## Build 018: Kaiden’s Garage
+
+Browse cards opens a dedicated full-art viewer with the shared Hot Wheels banner. Swipe horizontally or use arrows/keyboard; navigation wraps through all 26 cards. Names and position appear alongside/below the artwork. Choose either racer and save the displayed car as their avatar. The quick grid has a Large cards shortcut opening at the current selection. Browsing and avatar changes do not overwrite an unfinished race; names/difficulty and the one-page menu remain intact.
