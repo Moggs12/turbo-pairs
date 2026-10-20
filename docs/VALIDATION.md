@@ -108,3 +108,10 @@
 - All 34 tests pass, including an immediate playful ignition cue lasting under one second. App syntax and build pass.
 - The proposed real-car recording was rejected before publication; it is not included. Ignition uses three soft chugs and two rising harmonics through the existing audio engine. Other sound definitions are unchanged.
 - Ignition is invoked after the countdown audio unlock, on the same start gesture, so a suspended context cannot cancel the new cue.
+
+## Build 017 checks
+
+- All 35 tests, app syntax and static build pass. Tests cover repeat starts, mute, stopping and blocked/unavailable media playback.
+- SHA-256 confirms preview K, bundled source MP3 and built MP3 are identical (c73e532fbc9f8aafcb6e72f2d5088c78f818c927f75db812d36cc438cf5fec70). Preview decoding verified exactly 1.5 seconds.
+- Browser ran a sound-enabled start into the sneak peek with no console errors/warnings. Subjective choice was made by the user using the K audition.
+- Audio and credits are copied by the build. Other DSP sound definitions, approved art, scores and trophies are unchanged.

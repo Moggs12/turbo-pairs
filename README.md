@@ -91,3 +91,7 @@ Card flips use a short filtered-noise swoosh, pairs use a layered engine rev, an
 ## Build 016: playful ignition
 
 The red start/replay button plays a short toy-car ignition: three soft starter chugs and a rising vroom, under one second. It starts immediately from the tap and uses the existing Web Audio engine, mute and interruption handling. Other effects are unchanged. No external recording is bundled.
+
+## Build 017: selected K vroom
+
+The red start/replay button now plays the approved 1.5-second K audition, bundled locally and byte-for-byte identical to the preview. It replaces the previous synthesised ignition only. Mute, pause, menu and backgrounding stop playback; blocked audio never prevents a race. Source/edit/CC0 notes are in public/audio/CREDITS.md. Other game sounds are unchanged.
