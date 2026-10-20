@@ -61,3 +61,7 @@ Audio recovery is covered by automated tests simulating a second game, interrupt
 ## Build 008: title placement and gentler Easy bot
 
 Kaidens Turbo Cards sits in the blue pocket beneath the right side of the main flame logo, without a separate badge or extra menu height. Easy uses configurable 25% memory recall for each computer choice; otherwise it guesses among all legal cards. Medium and Hard retain their existing behaviour. Existing audio recovery and card animations are preserved.
+
+## Build 009: shared menu and results styling
+
+The main logo now carries the red-and-yellow Kaiden’s Turbo Pairs badge inside its existing blue pocket. Results reuse that same banner, cream/yellow panel, round ignition replay button and secondary controls. Lifetime trophies open in a dialog from either screen.

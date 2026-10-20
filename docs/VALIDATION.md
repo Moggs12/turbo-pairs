@@ -56,3 +56,10 @@
 - All 25 tests pass, including existing audio recovery and animation checks. Static build succeeds.
 - Easy tests cover remembered and forgotten choices without reading hidden identities. In 2,000 fixed-board opening-miss trials, next-turn full sweeps fell from 919 to 239; this is not an overall win-rate prediction.
 - Title uses SVG text inside the original logo area; approved artwork is unchanged. Latest published iOS audio recovery and effects remain intact.
+
+## Build 009 checks
+
+- All 25 automated checks, app syntax and static build pass.
+- Browser completed two-player and solo Easy races, verified accurate scores, and opened the results trophies dialog with a Back to results control.
+- Adjusted result layout after finding short-window overflow; final solo results fit 895 × 503 with document height equal to viewport height. Main and result banner use one shared renderer.
+- Approved PNG artwork and score storage keys are unchanged.

@@ -134,3 +134,22 @@ body:has(.menu) main{flex:1;min-height:0;display:flex}
 @media(max-width:500px){.menu{grid-template-rows:min(36vw,24dvh) minmax(0,1fr)}}
 @media(max-width:500px) and (max-height:650px){.menu{grid-template-rows:min(28vw,18dvh) minmax(0,1fr)}}
 @media(max-height:500px) and (max-width:500px){.menu{grid-template-rows:64px minmax(0,1fr)}}
+
+/* Shared menu and finish-line branding. */
+.menu-wordmark{filter:drop-shadow(0 5px 0 #00358e);font-style:normal;stroke:none;letter-spacing:.3px}
+.menu-wordmark .badge-name{font-size:23px;fill:#fff;paint-order:stroke fill;stroke:#a30b18;stroke-width:1px}
+.menu-wordmark .badge-title{font-size:35px;font-style:italic;fill:#ffdf00;stroke:#073b8e;stroke-width:1.5px;filter:drop-shadow(1px 2px 0 #073b8e)}
+.results-panel{align-items:center;text-align:center}
+.result-summary{display:flex;flex-direction:column;justify-content:center;gap:14px;min-width:0}
+.result-summary h1{font-size:clamp(26px,3.4vw,46px);line-height:1.06;color:#083782;text-shadow:0 2px 0 #bfdcff;letter-spacing:-1px;overflow-wrap:anywhere}
+.result-summary p{font-size:clamp(14px,1.5vw,19px);font-weight:800}
+.result-summary .eyebrow{color:#0755d9}
+.result-summary .scores{margin:0;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.result-summary .player{min-width:0;padding:10px;font-size:17px;text-align:left;overflow-wrap:anywhere}
+.result-summary .avatar{display:none}
+.result-summary .player strong{font-size:29px;min-width:38px;line-height:38px}
+.results-panel .victory-confetti{height:36px;font-size:26px;gap:12px}
+@media(max-width:500px){.results-panel{grid-template-rows:minmax(0,1fr) auto;gap:12px}.result-summary{gap:10px}.result-summary h1{font-size:30px}.result-summary .player{font-size:14px;padding:7px}.result-summary .player small{font-size:9px}.results-panel .victory-confetti{font-size:22px;height:28px}}
+@media(max-height:500px){.results-panel{grid-template-columns:minmax(0,1fr) 140px;grid-template-rows:auto}.result-summary{gap:7px}.result-summary h1{font-size:27px}.results-panel .victory-confetti{font-size:20px;height:24px}.result-summary .player{font-size:13px;padding:6px}.result-summary .player small{font-size:9px}.results-panel .menu-launch{flex-direction:column;gap:12px}.results-panel .menu-extras{width:100%;min-width:0}.results-panel .engine-start{--diameter:106px}}
+
+@media(min-width:501px) and (max-height:700px){.results-menu{grid-template-rows:min(25vw,30dvh) minmax(0,1fr)}.results-panel{padding:12px 16px;grid-template-columns:minmax(0,1fr) 160px;gap:18px}.results-panel .engine-start{--diameter:130px}.results-panel .menu-launch{gap:14px}.results-panel .menu-extras{gap:10px}.results-panel .menu-secondary{min-height:38px;font-size:12px;padding:7px}.result-summary{gap:9px}.result-summary h1{font-size:30px}}
