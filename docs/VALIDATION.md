@@ -70,3 +70,9 @@
 - Browser verified the initial six face-up disabled cards, concealed disabled cards during countdown, normal selection after GO, and refresh/Continue without another preview.
 - Pausing during the preview cancels it, conceals the cards, and resumes normal play. No console warnings/errors.
 - No new artwork, score schema, or AI memory changes.
+
+## Build 011 checks
+
+- Countdown now overlays only the board, after the sneak peek ends. Large yellow numbers and GO use a dark backdrop, red shadow and a reduced-motion-aware entrance.
+- Browser verified the overlay exactly matches board bounds at 895 × 503, with a 161 px number. Overlay clears and all cards unlock after GO. Pause/menu cancellation removes the overlay.
+- All 25 tests, app syntax and static build pass; no approved art or record keys changed.

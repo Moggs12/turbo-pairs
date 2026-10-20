@@ -69,3 +69,5 @@ The main logo now carries the red-and-yellow Kaiden’s Turbo Pairs badge inside
 ## Build 010: starting-grid peek
 
 New races briefly reveal the cars (3 seconds on Easy, 2.5 seconds otherwise), then conceal them before a 3–2–1–GO countdown. Cards stay locked until GO finishes. Pause/menu cancel the sequence; resumed races never get another preview. The approved improvement list, including browsing all 26 cards, lives in docs/ROADMAP.md.
+
+Build 011 makes 3–2–1–GO a large centred overlay above the playing cards. The preview stays unobstructed; pause/menu remove the overlay and normal play unlocks after GO.

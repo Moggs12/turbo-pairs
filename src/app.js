@@ -21,7 +21,7 @@ function soundLabel(){ $('#sound').textContent=settings.sound?'🔊 Sound on':'�
 $('#sound').onclick=()=>{settings.sound=!settings.sound;save(config.storage.settingsKey,settings);audioEngine.reset();soundLabel();sound('flip');};
 function recordHtml(){return `<div class="records"><strong>OUR TROPHIES</strong> · saved on this device${Object.values(records.players||{}).map(p=>`<p><strong>${esc(p.name)}</strong> · ${p.wins} wins · ${p.draws} draws · ${p.gamesPlayed} games · ${p.pairsCollected} pairs</p>`).join('')||'<p>Your first race starts the story.</p>'}</div>`;}
 function logoBanner(){return `<div class="menu-banner"><svg class="menu-logo" viewBox="45 575 970 310" role="img" aria-label="Hot Wheels — Kaiden’s Turbo Pairs"><defs><clipPath id="menu-logo-crop"><rect x="45" y="575" width="970" height="310"/></clipPath></defs><image href="${base+deck.back}" width="1060" height="1484" clip-path="url(#menu-logo-crop)"/><g class="menu-wordmark" transform="translate(680 779) rotate(-3 145 43)"><rect x="0" y="0" width="290" height="84" rx="15" fill="#ed1c24" stroke="#ffdf00" stroke-width="5"/><text x="15" y="29" class="badge-name">KAIDEN’S</text><text x="15" y="66" class="badge-title">TURBO PAIRS</text></g></svg></div>`;}
-function cancelCountdown(){clearTimeout(introTimer);introActive=false;}
+function cancelCountdown(){clearTimeout(introTimer);introActive=false;app.querySelector(".board-countdown")?.remove();app.querySelector(".starting-grid")?.classList.remove("starting-grid");}
 function home(){cancelCountdown();records=loadRecords(settings.mode||'solo');boardObserver.disconnect();window.scrollTo(0,0);clearTimeout(timer);paused=false;app.innerHTML=`<section class="menu" aria-label="Game menu">${logoBanner()}<form class="menu-form" data-mode="${settings.mode||'solo'}"><div class="menu-controls"><fieldset><legend>How shall we play?</legend><div class="menu-modes" role="group" aria-label="Play mode">${Object.entries(modeLabels).map(([id,label])=>`<button type="button" data-mode="${id}" class="mode ${settings.mode===id?'selected':''}" aria-pressed="${settings.mode===id}"><span aria-hidden="true">${id==='solo'?'🙂':id==='ai'?'🤖':'👫'}</span>${label}</button>`).join('')}</div></fieldset><div class="menu-names">${settings.players.map((p,i)=>`<label ${i===1&&settings.mode!=='two'?'hidden':''}>${i===0?'🏎️':'🚙'} ${settings.mode==='two'?`Racer ${i+1}`:'Your name'}<input name="player${i}" maxlength="24" required value="${esc(p.name)}" autocomplete="off" aria-label="Racer ${i+1} name"></label>`).join('')}</div><fieldset><legend>Pick your challenge!</legend><div class="menu-levels">${config.difficulties.map((d,i)=>`<button type="button" class="level level-${i} ${d.id===selected?'selected':''}" data-level="${d.id}" aria-pressed="${d.id===selected}"><span class="level-icon" aria-hidden="true">${['🚗','🏎️','🚀'][i]}</span><b>${esc(d.label)}</b><span>${d.pairs*2} cards</span><span class="picked" aria-hidden="true">✓</span></button>`).join('')}</div></fieldset></div><div class="menu-launch"><button class="engine-start" type="submit" aria-label="Let’s start"><span class="engine-face"><span class="ignition-light" aria-hidden="true"></span><small>ENGINE</small><strong>LET’S<br>START</strong></span></button><div class="menu-extras">${game?.status==='playing'?'<button type="button" class="menu-secondary" id="resume">▶ Continue game</button>':''}<button type="button" class="menu-secondary" id="records">🏆 Our scores</button></div></div></form></section>`;
  app.querySelectorAll('[data-level]').forEach(b=>b.onclick=()=>{selected=b.dataset.level;app.querySelectorAll('[data-level]').forEach(a=>{a.classList.toggle('selected',a===b);a.setAttribute('aria-pressed',String(a===b));});});
  app.querySelectorAll('button[data-mode]').forEach(button=>button.onclick=()=>{const data=new FormData(app.querySelector('form'));settings.players=settings.players.map((p,i)=>({...p,name:String(data.get(`player${i}`)||p.name).trim()||p.name}));settings.mode=button.dataset.mode;save(config.storage.settingsKey,settings);records=loadRecords(settings.mode);home();});
@@ -76,10 +76,15 @@ function startCountdown(){
  introTimer=setTimeout(()=>{
   updateBoard();
   race.querySelectorAll('[data-card]').forEach(button=>button.disabled=true);
+  const countdown=document.createElement('div');
+  countdown.className='board-countdown';
+  countdown.setAttribute('role','status');countdown.setAttribute('aria-live','assertive');countdown.setAttribute('aria-atomic','true');
+  turn.textContent='Get ready to race!';
   let count=3;
   const tick=()=>{
    if(!introActive)return;
-   turn.textContent=count>0?`${count}…`:'GO! 🏁';
+   countdown.innerHTML=`<span>${count>0?count:'GO!'}</span>`;
+   if(!countdown.isConnected)race.querySelector('.board-space').append(countdown);
    if(count===0){
     sound('start');
     introTimer=setTimeout(()=>{cancelCountdown();race.classList.remove('starting-grid');updateBoard();schedule();},650);

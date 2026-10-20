@@ -157,3 +157,10 @@ body:has(.menu) main{flex:1;min-height:0;display:flex}
 /* The start sequence uses the existing status banner, keeping cars unobstructed. */
 .starting-grid .turn{min-width:min(320px,90%);text-align:center;background:#ffdf00;color:#083782}
 .starting-grid .card:disabled{opacity:1}
+
+/* Race countdown sits over the cards, without changing board dimensions. */
+.board-space{position:relative}
+.board-countdown{position:absolute;inset:0;z-index:5;display:grid;place-items:center;border-radius:24px;background:#00265b88;pointer-events:none}
+.board-countdown>span{font-family:"Arial Black","Trebuchet MS",sans-serif;font-size:clamp(76px,min(24vw,32dvh),220px);font-weight:1000;font-style:italic;line-height:1;color:#ffdf00;-webkit-text-stroke:3px #073b8e;paint-order:stroke fill;text-shadow:0 7px 0 #ed1c24,0 12px 20px #001a55;animation:countdown-pop .3s ease-out both}
+@keyframes countdown-pop{from{transform:scale(.7);opacity:.3}to{transform:scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.board-countdown>span{animation:none}}
