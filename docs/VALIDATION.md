@@ -90,3 +90,9 @@
 - Browser verified old earned win cups, a separate empty racer cabinet, a new Easy completion earning its cup, race records dialog, and returning to results. No console warnings/errors.
 - Cabinet scrolls inside its own panel, retaining the banner and a sticky back control. At 895 × 503 the document has no horizontal or vertical overflow; the room has no horizontal overflow.
 - Trophy cups/cabinet are code-native vector/CSS artwork; approved car masters remain untouched. Existing score and session storage keys remain unchanged.
+
+## Build 014 checks
+
+- All 32 tests, syntax and static build pass. Tests cover repeated thresholds beyond the first cup and stable recalculation without extra awards.
+- Browser verified 7 Victory cups, 1 Five-star cup and 1 Easy cup from existing local records (9 total), with next targets of 8 wins, 10 wins and 2 Easy completions.
+- No new storage or artwork; existing progress is retained.

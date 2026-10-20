@@ -21,3 +21,16 @@ test('draws and losses earn difficulty completion but no win trophies',()=>{
  const r=applyResult({completed:[],players:{}},g);
  for(const id of ['a','b']){const cups=trophyProgress([r],id);assert.equal(cups.find(c=>c.id==='first-win').earned,false);assert.equal(cups.find(c=>c.id==='hard').earned,true);}
 });
+
+test('all cups repeat beyond the first award, with the next threshold advancing',()=>{
+ const cups=trophyProgress([{players:{a:{wins:23,difficulties:{easy:8,medium:3,hard:2}}}}],'a');
+ for(const [id,count,current,nextTarget] of [['first-win',23,23,24],['five-wins',4,23,25],['ten-wins',2,23,30],['easy',8,8,9],['medium',3,3,4],['hard',2,2,3]]){
+  const cup=cups.find(c=>c.id===id);assert.equal(cup.earnedCount,count);assert.equal(cup.current,current);assert.equal(cup.nextTarget,nextTarget);assert.equal(cup.earned,true);
+ }
+ assert.equal(cups.reduce((total,c)=>total+c.earnedCount,0),42);
+});
+test('repeat counts do not increase just from reopening or recalculating a cabinet',()=>{
+ const records={players:{a:{wins:10,difficulties:{easy:2}}}};
+ assert.deepEqual(trophyProgress([records],'a'),trophyProgress([records],'a'));
+ assert.equal(trophyProgress([records],'a').find(c=>c.id==='five-wins').earnedCount,2);
+});

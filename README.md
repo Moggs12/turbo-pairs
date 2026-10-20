@@ -79,3 +79,7 @@ Tap the small car beside a name to choose any of the 26 approved fronts. Each ra
 ## Build 013: trophy garage
 
 The Trophy garage button opens a separate screen with the shared Hot Wheels banner and a cartoon cabinet. Each racer collects six cups: 1, 5 and 10 wins, plus completing Easy, Medium and Hard. Solo completions count as wins; difficulty cups reward finishing regardless of outcome. Progress combines that racer’s solo, computer and two-player records on this device, excluding the computer. Old wins count immediately; old difficulty history cannot be reconstructed. Race records remain available inside the garage. Opening the garage preserves an unfinished race.
+
+## Build 014: repeatable trophies
+
+Every cup can be collected repeatedly. Win cups award every 1/5/10 wins; difficulty cups award for each completed game at that level. Each shelf shows quantity earned and lifetime progress toward the next threshold. Cabinet totals sum all collected cups instead of stopping at six. Existing records calculate counts automatically; reopening or refreshing never awards extras.
