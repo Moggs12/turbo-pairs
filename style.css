@@ -126,3 +126,11 @@ body:has(.menu) main{flex:1;min-height:0;display:flex}
 @media(max-height:500px){
  .turbo-badge{display:none}
 }
+
+/* Title stays inside the existing flame-logo area. */
+.menu-banner{flex-direction:row;gap:0}
+.menu-banner .menu-logo{flex:0 1 auto;height:100%}
+.menu-wordmark{font-family:"Arial Black","Trebuchet MS",sans-serif;font-style:italic;font-weight:1000;letter-spacing:.5px;fill:#ffdf00;stroke:#00358e;stroke-width:3px;paint-order:stroke fill;filter:drop-shadow(1px 2px 0 #ed1c24);pointer-events:none}
+@media(max-width:500px){.menu{grid-template-rows:min(36vw,24dvh) minmax(0,1fr)}}
+@media(max-width:500px) and (max-height:650px){.menu{grid-template-rows:min(28vw,18dvh) minmax(0,1fr)}}
+@media(max-height:500px) and (max-width:500px){.menu{grid-template-rows:64px minmax(0,1fr)}}

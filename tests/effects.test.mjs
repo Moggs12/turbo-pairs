@@ -21,7 +21,7 @@ test('audio and artwork title badge remain optional and reduced motion is respec
   assert.match(audio,new RegExp("case '"+cue+"'"));
  assert.match(app,/createSoundEngine\(window\.AudioContext \|\| window\.webkitAudioContext, \(\) => !!settings\.sound\)/);
  assert.match(app,/if\(typeof settings\.sound!=='boolean'\)settings\.sound=true/);
- assert.match(app,/class="turbo-badge"/);
- assert.match(css,/\.turbo-badge/);
+ assert.match(app,/class="menu-wordmark"/);
+ assert.match(css,/\.menu-wordmark/);
  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
 });

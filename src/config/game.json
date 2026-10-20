@@ -1,5 +1,5 @@
 {
-  "build": "007",
+  "build": "008",
   "status": "playable",
   "cardAspectRatio": {
     "width": 5,
@@ -21,7 +21,8 @@
     {
       "id": "easy",
       "label": "Easy",
-      "pairs": 3
+      "pairs": 3,
+      "computerMemoryRecall": 0.25
     },
     {
       "id": "medium",

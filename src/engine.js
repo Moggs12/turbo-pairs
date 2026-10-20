@@ -27,10 +27,13 @@ export function validSession(g,cards){
 
 // Only remembered, publicly revealed identities are consulted. Hidden card
 // identities in the shuffled deck are never inspected to choose a move.
-export function chooseAiCard(game, random = Math.random) {
+export function chooseAiCard(game, random = Math.random, memoryRecall = 1) {
  const memory=game.memory||{}, shown=game.revealed;
  const available=Array.from({length:game.deck.length},(_,i)=>i).filter(i=>!shown.includes(i)&&!game.matched.includes(memory[i]));
  if(!available.length)return null;
+ // On Easy, a missed recall becomes a genuine guess among all legal cards.
+ // Do not prefer unknown cards here: that can force a remembered pair.
+ if(memoryRecall<1&&random()>=Math.max(0,memoryRecall))return available[Math.floor(random()*available.length)];
  if(shown.length===1){const other=available.find(i=>memory[i]&&memory[i]===memory[shown[0]]);if(other!==undefined)return other;}
  else {for(const i of available){if(memory[i]&&available.some(j=>j!==i&&memory[j]===memory[i]))return i;}}
  const unknown=available.filter(i=>!memory[i]);

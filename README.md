@@ -57,3 +57,7 @@ Cards and the approved image deck are not altered. Reduced-motion preferences di
 The sound synthesizer now has its own reusable, testable module. It detects WebKit AudioContexts left in an interrupted or closed state, creates a fresh one, and resumes suspended contexts directly from user interaction. Starting another game and switching Sound On/Off resets the stale audio context. Hiding the app closes its context so it can be recreated after iOS app switching. Race Again starts a new engine cue, while mute preferences and lifetime records are unchanged.
 
 Audio recovery is covered by automated tests simulating a second game, interrupted contexts, suspended playback, muted output, failed/stale asynchronous resume, and unavailable Web Audio. Device testing on an actual iPhone remains necessary to confirm the root cause.
+
+## Build 008: title placement and gentler Easy bot
+
+Kaidens Turbo Cards sits in the blue pocket beneath the right side of the main flame logo, without a separate badge or extra menu height. Easy uses configurable 25% memory recall for each computer choice; otherwise it guesses among all legal cards. Medium and Hard retain their existing behaviour. Existing audio recovery and card animations are preserved.

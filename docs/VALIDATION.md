@@ -50,3 +50,9 @@
 - Toggle Sound Off and On. Confirm no sounds while off, sounds immediately after switching on, and the preference survives closing and reopening the app.
 - Confirm AI turns and delayed match/mismatch sounds do not produce lingering or duplicated audio after navigating away.
 - Run `npm test`, `node --check src/audio.js`, `node --check src/app.js`, and `npm run build` before deployment; verify sound on a real device as automated mocks cannot replicate all WebKit restrictions.
+
+## Build 008 checks
+
+- All 25 tests pass, including existing audio recovery and animation checks. Static build succeeds.
+- Easy tests cover remembered and forgotten choices without reading hidden identities. In 2,000 fixed-board opening-miss trials, next-turn full sweeps fell from 919 to 239; this is not an overall win-rate prediction.
+- Title uses SVG text inside the original logo area; approved artwork is unchanged. Latest published iOS audio recovery and effects remain intact.
