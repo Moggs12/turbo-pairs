@@ -270,3 +270,19 @@ body:has(.menu) main{flex:1;min-height:0;display:flex}
 @media(max-width:500px){.menu.collection-page{grid-template-rows:min(28vw,17dvh) minmax(0,1fr)}.collection-panel{padding:12px;gap:8px;border-radius:21px}.collection-toolbar h1{font-size:23px}.collection-toolbar p{font-size:10px}.collection-toolbar button{font-size:10px;padding:5px 8px}.collection-stage{grid-template-columns:40px minmax(0,1fr) 40px;gap:6px}.collection-arrow{width:40px;height:48px;font-size:40px}.collection-caption h2{font-size:20px}.collection-racers button{max-width:120px}.collection-choose{gap:6px}.collection-choose>.menu-secondary{font-size:12px}}
 @media(max-height:600px) and (min-width:501px){.menu.collection-page{grid-template-rows:64px minmax(0,1fr)}.collection-panel{grid-template-columns:minmax(0,1fr) 230px;grid-template-rows:auto minmax(0,1fr) auto;gap:10px 20px;padding:12px 18px}.collection-toolbar{grid-column:1/-1}.collection-stage{grid-column:1;grid-row:2/4}.collection-caption{grid-column:2;align-self:end}.collection-choose{grid-column:2;align-self:start;flex-direction:column}.collection-racers{flex-wrap:wrap;justify-content:center}.collection-toolbar h1{font-size:25px}.collection-choose>p{flex-basis:auto}.collection-choose>.menu-secondary{width:100%}.collection-caption h2{font-size:23px}}
 .menu:not(.results-menu) .menu-extras{gap:8px}
+
+/* Build 019: tall phones. Use the spare height for larger, evenly grouped
+   controls and a bigger start button instead of empty bands in the panel. */
+@media(max-width:500px) and (min-height:720px){
+ .menu:not(.results-menu) .menu-form{align-content:center;gap:clamp(20px,3.5dvh,34px);padding:18px 16px}
+ .menu:not(.results-menu) .menu-controls{gap:clamp(16px,2.6dvh,24px)}
+ .menu:not(.results-menu) legend{font-size:19px;margin-bottom:10px}
+ .menu:not(.results-menu) .mode{min-height:clamp(78px,11dvh,100px);font-size:12px}
+ .menu:not(.results-menu) .mode>span{font-size:30px;margin-bottom:7px}
+ .menu:not(.results-menu) .menu-names input{height:54px;font-size:18px}
+ .menu:not(.results-menu) .level{min-height:clamp(88px,12.5dvh,112px)}
+ .menu:not(.results-menu) .level-icon{font-size:28px}
+ .menu:not(.results-menu) .level b{font-size:19px}
+ .menu:not(.results-menu) .engine-start{--diameter:clamp(140px,19dvh,172px)}
+ .menu:not(.results-menu) .menu-secondary{min-height:52px;font-size:clamp(12px,3.3vw,13px);white-space:nowrap}
+}
