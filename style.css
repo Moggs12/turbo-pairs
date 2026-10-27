@@ -286,3 +286,37 @@ body:has(.menu) main{flex:1;min-height:0;display:flex}
  .menu:not(.results-menu) .engine-start{--diameter:clamp(140px,19dvh,172px)}
  .menu:not(.results-menu) .menu-secondary{min-height:52px;font-size:clamp(12px,3.3vw,13px);white-space:nowrap}
 }
+
+/* Build 020: results celebration. The cars collected fan out like a hand of
+   cards, solo races fill in up to three stars, and a race with no wrong
+   guesses gets a gold PERFECT RACE ribbon. Base styles are the final state,
+   so reduced motion simply shows everything at once. */
+.found-cars{--w:clamp(52px,9vw,84px);display:flex;justify-content:center;align-items:flex-start;padding:6px 0 calc(var(--w) * .12);min-height:calc(var(--w) * 1.52)}
+.found-cars.crowded{--w:clamp(46px,7.4vw,74px);padding-bottom:calc(var(--w) * .12 + 14px)}
+.found-car{width:var(--w);aspect-ratio:5/7;flex:none;border-radius:calc(var(--w) * .1);margin-left:calc(var(--w) * -.22);box-shadow:0 4px 0 #00389d33,0 6px 12px #00358c40;transform:translateY(var(--y)) rotate(var(--r));animation:found-car-in .5s cubic-bezier(.2,1.5,.4,1) var(--d) both}
+.found-car:first-child{margin-left:0}
+.found-cars.few{--w:clamp(60px,10vw,96px);gap:clamp(6px,1.2vw,12px)}
+.found-cars.few .found-car{margin-left:0}
+.found-cars.crowded .found-car{margin-left:calc(var(--w) * -.38)}
+.found-cars.crowded .found-car:first-child{margin-left:0}
+@keyframes found-car-in{from{opacity:0;transform:translateY(calc(var(--y) + 40px)) rotate(0deg) scale(.4)}}
+.result-stars{display:flex;justify-content:center;gap:clamp(8px,1.6vw,16px);margin:-2px 0 -4px}
+.result-star{width:clamp(38px,6vw,56px);height:auto;fill:#dfe9f7;stroke:#b9cce6;stroke-width:1.4;stroke-linejoin:round;overflow:visible}
+.result-star.earned{fill:#ffcc00;stroke:#e08a00;filter:drop-shadow(0 3px 0 #c06d00);animation:star-in .55s cubic-bezier(.2,1.7,.45,1) var(--d) both}
+.result-star:nth-child(2){transform:translateY(-6px) scale(1.12)}
+@keyframes star-in{from{fill:#dfe9f7;stroke:#b9cce6;filter:none;transform:scale(.2) rotate(-40deg)}}
+.result-star:nth-child(2).earned{animation-name:star-in-mid}
+@keyframes star-in-mid{from{fill:#dfe9f7;stroke:#b9cce6;filter:none;transform:translateY(-6px) scale(.2) rotate(-40deg)}}
+.perfect-banner{align-self:center;display:inline-flex;align-items:center;gap:8px;padding:7px 22px;border-radius:999px;background:linear-gradient(#ffe45c,#ffbf00);color:#7a3d00;font-weight:1000;font-size:clamp(14px,1.6vw,18px);letter-spacing:1.5px;border:3px solid #fff;box-shadow:0 4px 0 #d08400,0 0 0 3px #ffbf00;position:relative;overflow:hidden;animation:perfect-in .6s cubic-bezier(.2,1.6,.4,1) .2s both}
+.perfect-banner span{color:#ed1c24}
+.perfect-banner:after{content:'';position:absolute;inset:-20% auto -20% -40%;width:30%;background:linear-gradient(100deg,transparent,#ffffffcc,transparent);transform:skewX(-20deg);animation:perfect-shine 2.4s ease-in-out 1s infinite}
+@keyframes perfect-in{from{opacity:0;transform:scale(.3)}}
+@keyframes perfect-shine{0%{left:-40%}45%,100%{left:130%}}
+.results-panel.perfect{border-color:#ffbf00;box-shadow:0 6px 0 #003995,0 0 0 4px #fff3a6}
+@media(max-width:500px){.found-cars{--w:clamp(50px,16vw,70px)}.found-cars.few{--w:clamp(60px,20vw,84px);gap:6px}.found-cars.crowded{--w:clamp(44px,13vw,60px)}.result-star{width:40px}}
+@media(max-width:500px) and (min-height:720px){.results-panel .result-summary{gap:14px}.found-cars{--w:clamp(56px,18vw,78px)}.found-cars.few{--w:clamp(72px,23vw,100px)}.found-cars.crowded{--w:clamp(48px,14.5vw,64px)}.result-star{width:46px}}
+@media(max-height:500px){.found-cars,.found-cars.few{--w:42px;padding-top:0}.found-cars.crowded{--w:38px}.result-star{width:28px}.result-star:nth-child(2){transform:translateY(-3px) scale(1.1)}.perfect-banner{font-size:12px;padding:4px 14px}}
+@media(min-width:501px) and (max-height:700px){.found-cars,.found-cars.few{--w:52px}.found-cars.crowded{--w:46px}.result-star{width:34px}}
+/* Phones held sideways: a slimmer logo strip and a compact hand so the whole
+   results screen fits without scrolling. */
+@media(max-height:500px){.results-menu{grid-template-rows:64px minmax(0,1fr)}.found-cars,.found-cars.few,.found-cars.crowded{--w:36px;min-height:0;padding:0 0 6px}.found-cars.few{gap:5px}.found-cars.crowded{padding-bottom:16px}.results-panel .result-summary>.eyebrow{display:none}.result-star{width:24px}.result-summary h1{font-size:24px}}

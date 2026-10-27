@@ -67,6 +67,19 @@ export function createSoundEngine(AudioContextClass, enabled = () => true) {
     });
     noise(.82,.045,250,1100);break;
    case 'countdown': tone(0,660,.11,'triangle',.08);break;
+   // Results screen: a soft pop as each collected car lands, then a sparkle per star.
+   case 'pop': tone(0,420,.09,'sine',.07,780);break;
+   case 'star1': case 'star2': case 'star3': {
+    const step={star1:0,star2:1,star3:2}[type],base=[880,1047,1319][step];
+    tone(0,base,.22,'triangle',.07);tone(.06,base*1.5,.28,'sine',.04);break;
+   }
+   case 'perfect':
+    // A bigger fanfare for a race with no wrong guesses.
+    [[0,523,.12],[.13,659,.12],[.26,784,.12],[.39,1047,.16],[.6,784,.1],[.72,1047,.7]].forEach(([delay,frequency,duration])=>{
+     tone(delay,frequency,duration,'triangle',.08);
+     tone(delay,frequency*1.5,duration,'sawtooth',.02);
+     tone(delay,frequency/2,duration,'triangle',.04);
+    });break;
    case 'start': tone(0,990,.58,'triangle',.09);break;
    case 'finish':
     // A short major-key brass-style fanfare, ending on a bright held note.
