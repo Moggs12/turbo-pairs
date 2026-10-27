@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 019
+# Kaiden’s Turbo Pairs — Build 020
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -110,3 +110,7 @@ The build also writes a service worker. After the first visit the whole game, in
 On tall phones the menu uses its spare height for larger play-mode and difficulty buttons and a bigger start button, instead of empty bands inside the panel. Smaller phones, landscape, tablets and desktop are unchanged.
 
 To add or replace a card later: put the approved PNG in public/themes/hot-wheels/, update deck.json, then run `pip install pillow` once and `python3 scripts/make-web-images.py`.
+
+## Build 020: results celebration
+
+The results screen replaces the emoji row with the cars collected in that race, which fan out like a hand of cards, popping in one by one with a soft sound. Solo races then fill in up to three stars with a sparkle each: Easy 3★ in 5 turns or fewer and 2★ in 8, Medium 9 and 15, Hard 12 and 20, and finishing always earns 1★ (src/results.js). A race with no wrong guesses (one turn per pair) gets a shining gold PERFECT RACE ribbon, a gold panel edge and a bigger fanfare. Computer and two-player races show the collected cars without stars. Leaving the screen cancels any queued sounds, mute still silences everything, and reduced motion shows the final screen at once. Tested on Easy, Medium and Hard in all three modes, on tall and small phones, sideways and on desktop.

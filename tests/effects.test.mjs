@@ -25,3 +25,15 @@ test('audio and artwork title badge remain optional and reduced motion is respec
  assert.match(css,/\.menu-wordmark/);
  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
 });
+
+test('results screen shows collected cars, stars and the perfect-race cues',()=>{
+ for(const cue of ['pop','star1','star2','star3','perfect'])
+  assert.match(audio,new RegExp("case '"+cue+"'"));
+ assert.doesNotMatch(app,/victory-confetti/);
+ assert.match(app,/class=\\?"found-cars/);
+ assert.match(app,/perfect-banner/);
+ assert.match(css,/\.found-car\{/);
+ assert.match(css,/\.result-star\.earned/);
+ // Leaving the results screen cancels any sounds still queued.
+ assert.match(app,/\$\('#again'\)\.onclick=\(\)=>\{clearResultTimers\(\);/);
+});
