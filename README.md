@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 007
+# Kaiden’s Turbo Pairs — Build 019
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -18,7 +18,7 @@ Open the printed local address. dist/ contains the static release. Paths work un
 
 ## Scope
 
-Keyboard controls, pause with hidden cards, reduced-motion support and a remembered mute toggle are included. Sounds are short synthesised cues. Recorded engine/cheer effects, offline caching and installation are future work. Full-resolution approved PNGs are preserved, so initial loading may be slower on mobile data.
+Keyboard controls, pause with hidden cards, reduced-motion support and a remembered mute toggle are included. Sounds are short synthesised cues. Recorded engine/cheer effects are future work. Since Build 019 the release ships small WebP copies of the art and works offline once loaded.
 
 See docs/VALIDATION.md and docs/SCORES.md.
 
@@ -99,3 +99,14 @@ The red start/replay button now plays the approved 1.5-second K audition, bundle
 ## Build 018: Kaiden’s Garage
 
 Browse cards opens a dedicated full-art viewer with the shared Hot Wheels banner. Swipe horizontally or use arrows/keyboard; navigation wraps through all 26 cards. Names and position appear alongside/below the artwork. Choose either racer and save the displayed car as their avatar. The quick grid has a Large cards shortcut opening at the current selection. Browsing and avatar changes do not overwrite an unfinished race; names/difficulty and the one-page menu remain intact.
+
+
+## Build 019: fast loading, offline play and a fuller phone menu
+
+The release now ships WebP copies of the card art instead of the full-size PNGs: about 3 MB in total instead of 46 MB, with no visible difference on screen. The approved PNGs stay in public/themes/hot-wheels/ unchanged; scripts/make-web-images.py writes the copies to public/themes/hot-wheels/web/, and npm test fails if a card is missing its copy. Saved games still store the original PNG names, so unfinished races and records carry over.
+
+The build also writes a service worker. After the first visit the whole game, including every card, is kept on the device, so it opens instantly and plays with no connection. Each release gets its own cache named after a hash of the shipped files, so updates arrive on the next visit and old copies are cleared. The start "vroom" is streamed rather than cached, so it stays quiet when offline.
+
+On tall phones the menu uses its spare height for larger play-mode and difficulty buttons and a bigger start button, instead of empty bands inside the panel. Smaller phones, landscape, tablets and desktop are unchanged.
+
+To add or replace a card later: put the approved PNG in public/themes/hot-wheels/, update deck.json, then run `pip install pillow` once and `python3 scripts/make-web-images.py`.
