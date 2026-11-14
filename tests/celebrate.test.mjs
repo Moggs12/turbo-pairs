@@ -9,7 +9,7 @@ const celebrate = readFileSync('src/celebrate.js', 'utf8');
 
 test('every clip named in the deck exists and stays small', () => {
   const withClips = deck.cards.filter(card => card.clip);
-  assert.ok(withClips.length >= 3);
+  assert.equal(withClips.length, deck.cards.length, 'every car has a clip');
   for (const card of withClips) {
     assert.match(card.clip, /^clips\/[\w-]+\.mp4$/);
     assert.ok(existsSync(theme + card.clip), `${card.clip} is missing`);
