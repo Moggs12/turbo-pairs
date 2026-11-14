@@ -15,7 +15,8 @@
       "description": "bright red low racing coupe with yellow flame decals and a broad rear spoiler; oversized black road wheels",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/01-flame-racer.mp4"
     },
     {
       "id": "02",
@@ -24,7 +25,8 @@
       "description": "lime green tall dinosaur monster truck, enormous black offroad tires, purple triangular roof and tail spikes, dinosaur snout bonnet with friendly teeth",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/02-dino-stomper.mp4"
     },
     {
       "id": "03",
@@ -33,7 +35,8 @@
       "description": "blue and white shark shaped car with unmistakable large dorsal roof fin and friendly toothy shark nose",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/03-shark-chomper.mp4"
     },
     {
       "id": "04",
