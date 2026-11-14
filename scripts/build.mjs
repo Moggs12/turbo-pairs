@@ -9,6 +9,7 @@ await cp('src','dist/src',{recursive:true});
 await cp('public/themes/hot-wheels/web','dist/themes/hot-wheels/web',{recursive:true});
 // Flow clips for the match celebration (fetched when a race starts, then kept offline).
 await cp('public/themes/hot-wheels/clips','dist/themes/hot-wheels/clips',{recursive:true});
+await cp('public/themes/hot-wheels/scenes','dist/themes/hot-wheels/scenes',{recursive:true});
 const deck=JSON.parse(await readFile('public/themes/hot-wheels/deck.json','utf8'));
 await writeFile('dist/themes/hot-wheels/deck.json',JSON.stringify({...deck,web:'web/'},null,2));
 await cp('public/icons','dist/icons',{recursive:true});
@@ -45,7 +46,7 @@ async function listFiles(directory){
 }
 const shipped=(await listFiles('dist')).map(path=>path.slice('dist/'.length)).filter(path=>!path.startsWith('audio/')).sort();
 // Clips are cached the first time a race uses them, so installing stays light.
-const precached=shipped.filter(path=>!path.startsWith('themes/hot-wheels/clips/'));
+const precached=shipped.filter(path=>!path.startsWith('themes/hot-wheels/clips/')&&!/^themes\/hot-wheels\/scenes\/.*\.mp4$/.test(path));
 const hash=createHash('sha256');
 for(const path of shipped){hash.update(path);hash.update(await readFile(`dist/${path}`));}
 const release=hash.digest('hex').slice(0,12);

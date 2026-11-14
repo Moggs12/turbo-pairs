@@ -33,3 +33,16 @@ test('clips play silently inline and the celebration can always be skipped', () 
 test('cars without a clip still get a short celebration', () => {
   assert.match(celebrate, /setTimeout\(finish, reducedMotion \? 1200 : 1900\)/);
 });
+
+test('menu race scene, perfect-race flag and transparent logo ship with the game', () => {
+  for (const f of ['scenes/menu-race.mp4', 'scenes/menu-race.webp', 'scenes/perfect-finish.mp4', 'logo.png', 'web/logo.webp'])
+    assert.ok(existsSync(theme + f), `${f} is missing`);
+  assert.ok(statSync(theme + 'scenes/menu-race.mp4').size < 1_200_000);
+  assert.match(app, /menu-scene-video/);
+  assert.match(app, /scenes\/perfect-finish\.mp4/);
+});
+
+test('the garage can make any car come to life', () => {
+  assert.match(app, /id="play-car"/);
+  assert.match(app, /image\.onclick=playCar/);
+});

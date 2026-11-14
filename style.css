@@ -345,3 +345,33 @@ body:has(.menu) main{flex:1;min-height:0;display:flex}
 @keyframes confetti-burst{0%{opacity:1;transform:translate(0,0) rotate(0) scale(.4)}70%{opacity:1}100%{opacity:0;transform:translate(var(--x),calc(var(--y) + 90px)) rotate(var(--r)) scale(1)}}
 @media(max-height:500px){.match-card{width:150px}.match-card.has-clip{width:min(70vw,460px)}.match-name{font-size:30px}.match-stage{gap:8px}}
 @media(prefers-reduced-motion:reduce){.match-show,.match-card,.match-name,.match-tap,.match-card:after{animation:none}}
+
+/* Build 023: Garage "Make it go!" plays the car's Flow clip. */
+.collection-caption .go-button{display:inline-flex;align-items:center;gap:6px;width:auto;margin-top:8px;padding:9px 22px;min-height:44px;border-radius:999px;border:3px solid #fff;background:linear-gradient(#ffe45c,#ffbf00);color:#7a3d00;font-weight:1000;font-size:15px;letter-spacing:.5px;box-shadow:0 4px 0 #d08400,0 0 0 3px #ffbf00;cursor:pointer}
+.collection-caption .go-button:active{transform:translateY(3px);box-shadow:0 1px 0 #d08400,0 0 0 3px #ffbf00}
+@media(max-height:500px){.collection-caption .go-button{margin-top:4px;min-height:36px;padding:5px 14px;font-size:13px}}
+
+/* Build 023: foil card backs. A slow diagonal shine sweeps across face-down
+   cards, staggered so the board twinkles like a pack of collectable cards. */
+.board .card{position:relative}
+.board .card::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+ background:linear-gradient(115deg,transparent 35%,#ffffff00 40%,#ffffffb3 48%,#fff7c2cc 50%,#ffffffb3 52%,#ffffff00 60%,transparent 65%);
+ background-size:250% 100%;background-position:120% 0;mix-blend-mode:screen;opacity:.9;
+ animation:foil-sweep 5.5s ease-in-out infinite;animation-delay:var(--foil-delay,0s);transition:opacity .2s}
+.board .card:nth-child(4n+2)::after{--foil-delay:1.1s}
+.board .card:nth-child(4n+3)::after{--foil-delay:2.3s}
+.board .card:nth-child(4n+4)::after{--foil-delay:3.4s}
+.board .card:nth-child(3n+1)::after{animation-duration:6.2s}
+.board .card.open::after,.board .card.matched::after{opacity:0;animation:none}
+@keyframes foil-sweep{0%,55%{background-position:120% 0}85%,100%{background-position:-20% 0}}
+@media(prefers-reduced-motion:reduce){.board .card::after{animation:none;opacity:0}}
+
+/* Build 023: the logo banner becomes a window onto a Flow clip of Flame
+   Racer, Shark Chomper and Dino Stomper racing round the track. The logo is
+   now a transparent cut-out; the still poster shows until the video plays,
+   offline, and for reduced motion. */
+.menu-banner.has-scene{position:relative;overflow:hidden;border-radius:20px;box-shadow:0 5px 0 #003995,inset 0 0 0 3px #ffdf00aa;isolation:isolate}
+.menu-scene{position:absolute;inset:0;z-index:0;background:#2f8de4}
+.menu-scene img,.menu-scene video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;display:block}
+.menu-scene::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 48%,#00296b66,#00296b00 75%),linear-gradient(#00000000 55%,#00296b55)}
+.has-scene .menu-logo{position:relative;z-index:1;border-radius:0;overflow:visible;filter:drop-shadow(0 4px 0 #00358e) drop-shadow(0 0 16px #001a4dcc)}
