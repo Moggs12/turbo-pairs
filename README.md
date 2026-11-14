@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 020
+# Kaiden’s Turbo Pairs — Build 021
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -114,3 +114,9 @@ To add or replace a card later: put the approved PNG in public/themes/hot-wheels
 ## Build 020: results celebration
 
 The results screen replaces the emoji row with the cars collected in that race, which fan out like a hand of cards, popping in one by one with a soft sound. Solo races then fill in up to three stars with a sparkle each: Easy 3★ in 5 turns or fewer and 2★ in 8, Medium 9 and 15, Hard 12 and 20, and finishing always earns 1★ (src/results.js). A race with no wrong guesses (one turn per pair) gets a shining gold PERFECT RACE ribbon, a gold panel edge and a bigger fanfare. Computer and two-player races show the collected cars without stars. Leaving the screen cancels any queued sounds, mute still silences everything, and reduced motion shows the final screen at once. Tested on Easy, Medium and Hard in all three modes, on tall and small phones, sideways and on desktop.
+
+## Build 021: match celebration with Flow clips
+
+Finding a pair now puts that car centre stage: confetti, its name in big gold letters and read aloud (when sound is on), and a tap anywhere to carry on. Cars with a clip come to life on video. The first three (Flame Racer, Dino Stomper, Shark Chomper) were made in Google Flow with frames-to-video, using the car cropped from its approved card as the first frame so it stays on-model. Cars without a clip yet zoom in with a shine. Turbo Bot's matches skip the celebration to keep its turns quick, and pausing or leaving cancels it.
+
+Clips live in public/themes/hot-wheels/clips/ as silent 960×540 H.264 MP4s of about 350–520 KB (`ffmpeg -an -vf scale=960:-2 -c:v libx264 -crf 27 -movflags +faststart`). Add `"clip": "clips/NN-name.mp4"` to the card in deck.json; npm test checks every clip exists and stays under 900 KB. Clips are fetched when a race starts and kept for offline play after first use, so installing stays light.

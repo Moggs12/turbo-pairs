@@ -7,6 +7,8 @@ await cp('src','dist/src',{recursive:true});
 // Ship the small WebP copies of the card art. The approved PNG originals stay
 // in public/themes/hot-wheels/ but are left out of the release.
 await cp('public/themes/hot-wheels/web','dist/themes/hot-wheels/web',{recursive:true});
+// Flow clips for the match celebration (fetched when a race starts, then kept offline).
+await cp('public/themes/hot-wheels/clips','dist/themes/hot-wheels/clips',{recursive:true});
 const deck=JSON.parse(await readFile('public/themes/hot-wheels/deck.json','utf8'));
 await writeFile('dist/themes/hot-wheels/deck.json',JSON.stringify({...deck,web:'web/'},null,2));
 await cp('public/icons','dist/icons',{recursive:true});
@@ -42,10 +44,12 @@ async function listFiles(directory){
  return files;
 }
 const shipped=(await listFiles('dist')).map(path=>path.slice('dist/'.length)).filter(path=>!path.startsWith('audio/')).sort();
+// Clips are cached the first time a race uses them, so installing stays light.
+const precached=shipped.filter(path=>!path.startsWith('themes/hot-wheels/clips/'));
 const hash=createHash('sha256');
 for(const path of shipped){hash.update(path);hash.update(await readFile(`dist/${path}`));}
 const release=hash.digest('hex').slice(0,12);
-const precache=['./',...shipped.filter(path=>path!=='index.html').map(path=>/^src\/.*\.js$/.test(path)?`${path}?v=${version}`:path),'index.html'];
+const precache=['./',...precached.filter(path=>path!=='index.html').map(path=>/^src\/.*\.js$/.test(path)?`${path}?v=${version}`:path),'index.html'];
 const template=await readFile('scripts/sw-template.js','utf8');
 await writeFile('dist/sw.js',template.replace("'__RELEASE__'",JSON.stringify(release)).replace('__PRECACHE__',JSON.stringify(precache,null,1)));
-console.log(`Built Hot Wheels release ${release} in dist (${shipped.length} files kept for offline play)`);
+console.log(`Built Hot Wheels release ${release} in dist (${precached.length} files kept for offline play, clips cached on first use)`);
