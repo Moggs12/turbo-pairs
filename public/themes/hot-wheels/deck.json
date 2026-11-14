@@ -45,7 +45,8 @@
       "description": "bright yellow curved banana shaped open buggy, brown banana tip ends, small black wheels",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/04-banana-buggy.mp4"
     },
     {
       "id": "05",
@@ -54,7 +55,8 @@
       "description": "silver and orange rocket shaped car with pointed rocket nose and one giant orange rear thruster",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/05-rocket-rider.mp4"
     },
     {
       "id": "06",
@@ -63,7 +65,8 @@
       "description": "pink and mint chunky ice cream van with a giant vanilla ice cream cone fixed to its roof",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/06-ice-cream-cruiser.mp4"
     },
     {
       "id": "07",
@@ -72,7 +75,8 @@
       "description": "brown and red pirate ship shaped wheeled wagon, one clear red sail, small black wheels",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/07-pirate-wagon.mp4"
     },
     {
       "id": "08",
@@ -81,7 +85,8 @@
       "description": "round white compact beetle style car with very broad rainbow stripes across the rounded body",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/08-rainbow-beetle.mp4"
     },
     {
       "id": "09",
@@ -90,7 +95,8 @@
       "description": "orange tiger inspired car with thick black tiger stripes and a curling tiger tail at rear",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/09-tiger-prowler.mp4"
     },
     {
       "id": "10",
@@ -99,7 +105,8 @@
       "description": "purple and cyan flying saucer shaped car, round saucer rim on wheels, clear blue bubble canopy",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/10-ufo-roller.mp4"
     },
     {
       "id": "11",
@@ -108,7 +115,8 @@
       "description": "bright red and white tall fire engine with a prominent yellow ladder on top",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/11-fire-hero.mp4"
     },
     {
       "id": "12",
@@ -117,7 +125,8 @@
       "description": "turquoise and cream chunky retro camper van carrying one bright orange surfboard on roof",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/12-surf-bus.mp4"
     },
     {
       "id": "13",
@@ -126,7 +135,8 @@
       "description": "giant tan cheeseburger shaped car with green lettuce and yellow cheese layers and sesame seed bun roof",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/13-burger-buggy.mp4"
     },
     {
       "id": "14",
@@ -135,7 +145,8 @@
       "description": "dark green and yellow crocodile shaped long car with broad crocodile snout, short legs replaced by wheels and long crocodile tail",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/14-croc-crawler.mp4"
     },
     {
       "id": "15",
@@ -144,7 +155,8 @@
       "description": "bright yellow very short boxy cartoon taxi with black checker stripe and TAXI roof sign",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/15-taxi-tot.mp4"
     },
     {
       "id": "16",
@@ -153,7 +165,8 @@
       "description": "pink and white candy themed rounded car with one giant red white swirled lollipop standing on roof",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/16-candy-cruiser.mp4"
     },
     {
       "id": "17",
@@ -162,7 +175,8 @@
       "description": "blue and yellow chunky farm tractor with two enormous rear tires and tiny front tires",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/17-thunder-tractor.mp4"
     },
     {
       "id": "18",
@@ -171,7 +185,8 @@
       "description": "black and white penguin shaped egg body car with orange beak front and little black flipper sides",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/18-penguin-slider.mp4"
     },
     {
       "id": "19",
@@ -180,7 +195,8 @@
       "description": "crimson and gold dragon shaped car with gold curved horns and prominent small gold dragon wings",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/19-dragon-drifter.mp4"
     },
     {
       "id": "20",
@@ -189,7 +205,8 @@
       "description": "bright yellow and grey chunky construction loader with a large front digging scoop",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/20-digger-dash.mp4"
     },
     {
       "id": "21",
@@ -198,7 +215,8 @@
       "description": "white and orange six wheeled lunar rover with small satellite dish and enclosed blue glass cabin",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/21-space-rover.mp4"
     },
     {
       "id": "22",
@@ -207,7 +225,8 @@
       "description": "teal and green turtle shaped car with large domed patterned green shell and friendly turtle head",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/22-turtle-trekker.mp4"
     },
     {
       "id": "23",
@@ -216,7 +235,8 @@
       "description": "purple and yellow giant trainer sneaker shaped car with large yellow laces, four black wheels",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/23-boot-scoot.mp4"
     },
     {
       "id": "24",
@@ -225,7 +245,8 @@
       "description": "red and white striped popcorn tub shaped car overflowing with chunky yellow white popcorn",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/24-popcorn-popper.mp4"
     },
     {
       "id": "25",
@@ -234,7 +255,8 @@
       "description": "electric blue and yellow very long dragster with lightning bolt shaped fins and huge rear tires",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/25-lightning-bolt.mp4"
     },
     {
       "id": "26",
@@ -243,7 +265,8 @@
       "description": "cream and brown puppy shaped pickup truck with large floppy brown ears and a wagging tail",
       "width": 1060,
       "height": 1484,
-      "ratio_5_7": true
+      "ratio_5_7": true,
+      "clip": "clips/26-puppy-pickup.mp4"
     }
   ],
   "themeId": "hot-wheels",

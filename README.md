@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 021
+# Kaiden’s Turbo Pairs — Build 022
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -120,3 +120,7 @@ The results screen replaces the emoji row with the cars collected in that race, 
 Finding a pair now puts that car centre stage: confetti, its name in big gold letters and read aloud (when sound is on), and a tap anywhere to carry on. Cars with a clip come to life on video. The first three (Flame Racer, Dino Stomper, Shark Chomper) were made in Google Flow with frames-to-video, using the car cropped from its approved card as the first frame so it stays on-model. Cars without a clip yet zoom in with a shine. Turbo Bot's matches skip the celebration to keep its turns quick, and pausing or leaving cancels it.
 
 Clips live in public/themes/hot-wheels/clips/ as silent 960×540 H.264 MP4s of about 350–520 KB (`ffmpeg -an -vf scale=960:-2 -c:v libx264 -crf 27 -movflags +faststart`). Add `"clip": "clips/NN-name.mp4"` to the card in deck.json; npm test checks every clip exists and stays under 900 KB. Clips are fetched when a race starts and kept for offline play after first use, so installing stays light.
+
+## Build 022: every car comes to life
+
+All 26 cars now have a Flow clip for the match celebration. The 23 new ones were made at 360p (5 credits each instead of 15), then downloaded with Flow's free 720p upscale, which is noticeably sharper than a plain resize. Each starts from the car cropped from its approved card and has its own prompt (the pirate ship rocks on waves, the popcorn pops, the turtle hides in its shell, and so on), with a small hop that stays in frame. They are compressed the same way as before (silent 960×540 H.264, about 350–740 KB each, 14 MB in all). A race only fetches the clips for the cars on its board. npm test now checks every card has a clip.
