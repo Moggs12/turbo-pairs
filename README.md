@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 022
+# Kaiden’s Turbo Pairs — Build 023
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -124,3 +124,10 @@ Clips live in public/themes/hot-wheels/clips/ as silent 960×540 H.264 MP4s of a
 ## Build 022: every car comes to life
 
 All 26 cars now have a Flow clip for the match celebration. The 23 new ones were made at 360p (5 credits each instead of 15), then downloaded with Flow's free 720p upscale, which is noticeably sharper than a plain resize. Each starts from the car cropped from its approved card and has its own prompt (the pirate ship rocks on waves, the popcorn pops, the turtle hides in its shell, and so on), with a small hop that stays in frame. They are compressed the same way as before (silent 960×540 H.264, about 350–740 KB each, 14 MB in all). A race only fetches the clips for the cars on its board. npm test now checks every card has a clip.
+
+## Build 023: moving menu, Garage clips, foil backs and a chequered-flag finish
+
+- **Moving menu banner.** The Hot Wheels logo is now a transparent cut-out (public/themes/hot-wheels/logo.png, from the approved card back) floating over a Flow clip of Flame Racer, Shark Chomper and Dino Stomper racing round an orange track and through a loop. The clip was made with Flow's Ingredients mode using the three approved car images (8 s, 360p, 8 credits, free 720p upscale), cropped to remove letterboxing and cross-faded so it loops seamlessly (scenes/menu-race.mp4, about 830 KB). A still poster shows straight away, offline, and for reduced motion.
+- **Kaiden's Garage.** A gold "Make it go!" button (or tapping the card) plays that car's clip with the same celebration as a match.
+- **Foil card backs.** A slow diagonal shine sweeps across face-down cards, staggered so the board twinkles. It is off for reduced motion.
+- **Perfect race.** After the last pair in a solo race with no wrong guesses, a chequered flag waves and a gold trophy rises in confetti (scenes/perfect-finish.mp4, 5 s, 360p, 5 credits) before the results.
