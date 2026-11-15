@@ -1,7 +1,7 @@
 // Match celebration: when a racer finds a pair, the car takes centre stage.
 // Cars with a Flow clip (deck.json "clip") come to life on video; the rest
-// zoom in with a shine. Confetti, the car's name read aloud, and a tap
-// anywhere to carry on. Returns a promise that resolves when it is over.
+// zoom in with a shine. Confetti, the car's name (the announcer line is
+// played by the caller through the sound engine), and a tap anywhere to carry on. Returns a promise that resolves when it is over.
 
 const blobs = new Map(); // clip path -> object URL, fetched once per visit
 
@@ -14,21 +14,9 @@ export function preloadClips(paths) {
   }
 }
 
-export function speakName(name, enabled) {
-  try {
-    if (!enabled || !('speechSynthesis' in window)) return;
-    speechSynthesis.cancel();
-    const say = new SpeechSynthesisUtterance(name + '!');
-    say.rate = 0.95;
-    say.pitch = 1.25;
-    say.lang = 'en-GB';
-    speechSynthesis.speak(say);
-  } catch { /* speech is a bonus only */ }
-}
-
 const CONFETTI = ['#ffcc00', '#ed1c24', '#1f6bff', '#25c26e', '#ff7ac8', '#ffffff'];
 
-export function celebrate({name, image, clip, sound = true, reducedMotion = false}) {
+export function celebrate({name, image, clip, reducedMotion = false}) {
   return new Promise(async resolve => {
     const el = document.createElement('div');
     el.className = 'match-show';
@@ -52,7 +40,6 @@ export function celebrate({name, image, clip, sound = true, reducedMotion = fals
     el.addEventListener('pointerdown', finish);
     el.addEventListener('keydown', finish);
     el.cancel = finish; // lets the game end it early (pause, leaving the race)
-    speakName(name, sound);
 
     const url = clip && blobs.has(clip) ? await blobs.get(clip) : null;
     if (done) return;

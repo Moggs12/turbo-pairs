@@ -25,9 +25,10 @@ self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
-  // iPhone audio uses partial (Range) requests, which a cache cannot answer
-  // reliably. The start sound simply stays quiet when offline.
-  if (request.headers.has('range') || url.pathname.endsWith('.mp3')) return;
+  // iPhone <audio> uses partial (Range) requests, which a cache cannot answer
+  // reliably, so the start sound simply stays quiet when offline. The
+  // announcer lines are fetched whole by the game, so they can be kept.
+  if (request.headers.has('range') || (url.pathname.endsWith('.mp3') && !url.pathname.includes('/voice/'))) return;
 
   if (request.mode === 'navigate') {
     // Fresh page when online; the saved copy when offline.

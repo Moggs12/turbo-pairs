@@ -16,7 +16,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/01-flame-racer.mp4"
+      "clip": "clips/01-flame-racer.mp4",
+      "voice": "voice/01-flame-racer.mp3"
     },
     {
       "id": "02",
@@ -26,7 +27,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/02-dino-stomper.mp4"
+      "clip": "clips/02-dino-stomper.mp4",
+      "voice": "voice/02-dino-stomper.mp3"
     },
     {
       "id": "03",
@@ -36,7 +38,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/03-shark-chomper.mp4"
+      "clip": "clips/03-shark-chomper.mp4",
+      "voice": "voice/03-shark-chomper.mp3"
     },
     {
       "id": "04",
@@ -46,7 +49,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/04-banana-buggy.mp4"
+      "clip": "clips/04-banana-buggy.mp4",
+      "voice": "voice/04-banana-buggy.mp3"
     },
     {
       "id": "05",
@@ -56,7 +60,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/05-rocket-rider.mp4"
+      "clip": "clips/05-rocket-rider.mp4",
+      "voice": "voice/05-rocket-rider.mp3"
     },
     {
       "id": "06",
@@ -66,7 +71,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/06-ice-cream-cruiser.mp4"
+      "clip": "clips/06-ice-cream-cruiser.mp4",
+      "voice": "voice/06-ice-cream-cruiser.mp3"
     },
     {
       "id": "07",
@@ -76,7 +82,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/07-pirate-wagon.mp4"
+      "clip": "clips/07-pirate-wagon.mp4",
+      "voice": "voice/07-pirate-wagon.mp3"
     },
     {
       "id": "08",
@@ -86,7 +93,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/08-rainbow-beetle.mp4"
+      "clip": "clips/08-rainbow-beetle.mp4",
+      "voice": "voice/08-rainbow-beetle.mp3"
     },
     {
       "id": "09",
@@ -96,7 +104,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/09-tiger-prowler.mp4"
+      "clip": "clips/09-tiger-prowler.mp4",
+      "voice": "voice/09-tiger-prowler.mp3"
     },
     {
       "id": "10",
@@ -106,7 +115,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/10-ufo-roller.mp4"
+      "clip": "clips/10-ufo-roller.mp4",
+      "voice": "voice/10-ufo-roller.mp3"
     },
     {
       "id": "11",
@@ -116,7 +126,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/11-fire-hero.mp4"
+      "clip": "clips/11-fire-hero.mp4",
+      "voice": "voice/11-fire-hero.mp3"
     },
     {
       "id": "12",
@@ -126,7 +137,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/12-surf-bus.mp4"
+      "clip": "clips/12-surf-bus.mp4",
+      "voice": "voice/12-surf-bus.mp3"
     },
     {
       "id": "13",
@@ -136,7 +148,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/13-burger-buggy.mp4"
+      "clip": "clips/13-burger-buggy.mp4",
+      "voice": "voice/13-burger-buggy.mp3"
     },
     {
       "id": "14",
@@ -146,7 +159,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/14-croc-crawler.mp4"
+      "clip": "clips/14-croc-crawler.mp4",
+      "voice": "voice/14-croc-crawler.mp3"
     },
     {
       "id": "15",
@@ -156,7 +170,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/15-taxi-tot.mp4"
+      "clip": "clips/15-taxi-tot.mp4",
+      "voice": "voice/15-taxi-tot.mp3"
     },
     {
       "id": "16",
@@ -166,7 +181,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/16-candy-cruiser.mp4"
+      "clip": "clips/16-candy-cruiser.mp4",
+      "voice": "voice/16-candy-cruiser.mp3"
     },
     {
       "id": "17",
@@ -176,7 +192,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/17-thunder-tractor.mp4"
+      "clip": "clips/17-thunder-tractor.mp4",
+      "voice": "voice/17-thunder-tractor.mp3"
     },
     {
       "id": "18",
@@ -186,7 +203,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/18-penguin-slider.mp4"
+      "clip": "clips/18-penguin-slider.mp4",
+      "voice": "voice/18-penguin-slider.mp3"
     },
     {
       "id": "19",
@@ -196,7 +214,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/19-dragon-drifter.mp4"
+      "clip": "clips/19-dragon-drifter.mp4",
+      "voice": "voice/19-dragon-drifter.mp3"
     },
     {
       "id": "20",
@@ -206,7 +225,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/20-digger-dash.mp4"
+      "clip": "clips/20-digger-dash.mp4",
+      "voice": "voice/20-digger-dash.mp3"
     },
     {
       "id": "21",
@@ -216,7 +236,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/21-space-rover.mp4"
+      "clip": "clips/21-space-rover.mp4",
+      "voice": "voice/21-space-rover.mp3"
     },
     {
       "id": "22",
@@ -226,7 +247,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/22-turtle-trekker.mp4"
+      "clip": "clips/22-turtle-trekker.mp4",
+      "voice": "voice/22-turtle-trekker.mp3"
     },
     {
       "id": "23",
@@ -236,7 +258,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/23-boot-scoot.mp4"
+      "clip": "clips/23-boot-scoot.mp4",
+      "voice": "voice/23-boot-scoot.mp3"
     },
     {
       "id": "24",
@@ -246,7 +269,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/24-popcorn-popper.mp4"
+      "clip": "clips/24-popcorn-popper.mp4",
+      "voice": "voice/24-popcorn-popper.mp3"
     },
     {
       "id": "25",
@@ -256,7 +280,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/25-lightning-bolt.mp4"
+      "clip": "clips/25-lightning-bolt.mp4",
+      "voice": "voice/25-lightning-bolt.mp3"
     },
     {
       "id": "26",
@@ -266,7 +291,8 @@
       "width": 1060,
       "height": 1484,
       "ratio_5_7": true,
-      "clip": "clips/26-puppy-pickup.mp4"
+      "clip": "clips/26-puppy-pickup.mp4",
+      "voice": "voice/26-puppy-pickup.mp3"
     }
   ],
   "themeId": "hot-wheels",

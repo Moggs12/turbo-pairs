@@ -113,5 +113,50 @@ export function createSoundEngine(AudioContextClass, enabled = () => true) {
   } catch {}
  }
 
- return {play, reset, wake: () => play(null)};
+ // Recorded announcer lines (deck.json "voice"). They play through the same
+ // Web Audio context as the effects, which the first tap has already unlocked,
+ // so they start on time on every phone and always play to the end.
+ const recordings = new Map(); // url -> Promise<ArrayBuffer|null>, kept for the visit
+ const decoded = new Map();    // url -> Promise<AudioBuffer|null>, per audio context
+ let decodedFor = null, speaking = null;
+ const fetchFile = typeof fetch === 'function' ? url => fetch(url).then(r => (r.ok ? r.arrayBuffer() : null)).catch(() => null) : () => Promise.resolve(null);
+
+ function preload(urls) {
+  for (const url of urls) if (url && !recordings.has(url)) recordings.set(url, fetchFile(url));
+ }
+
+ function decode(ctx, url) {
+  if (decodedFor !== ctx) { decoded.clear(); decodedFor = ctx; }
+  if (!decoded.has(url)) {
+   preload([url]);
+   decoded.set(url, recordings.get(url).then(data => data && new Promise(done => {
+    // The callback form works on every Safari; decoding detaches the bytes, so pass a copy.
+    try { const result = ctx.decodeAudioData(data.slice(0), done, () => done(null)); result?.catch?.(() => done(null)); } catch { done(null); }
+   })));
+  }
+  return decoded.get(url);
+ }
+
+ function say(url) {
+  if (!url || !enabled()) return;
+  const ctx = getContext();
+  if (!ctx?.decodeAudioData) return;
+  const currentGeneration = generation;
+  try { const resumed = ctx.resume?.(); resumed?.catch?.(() => {}); } catch {}
+  decode(ctx, url).then(buffer => {
+   if (!buffer || !enabled() || context !== ctx || generation !== currentGeneration) return;
+   try { speaking?.stop(); } catch {}
+   const source = ctx.createBufferSource(), gain = ctx.createGain();
+   source.buffer = buffer;
+   gain.gain.value = .9;
+   source.connect(gain); gain.connect(ctx.destination);
+   source.onended = () => { if (speaking === source) speaking = null; };
+   speaking = source;
+   source.start();
+  });
+ }
+
+ function hush() { try { speaking?.stop(); } catch {} speaking = null; }
+
+ return {play, reset: () => { hush(); reset(); }, wake: () => play(null), preload, say, hush};
 }

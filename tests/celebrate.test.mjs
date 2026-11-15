@@ -55,3 +55,18 @@ test('an installed game can never mix an old stylesheet or deck with new code', 
   assert.match(app, /fetch\(u\+DATA_VERSION\)/);
   assert.match(sw, /\(css\|json\)/); // network-first for stylesheets and data
 });
+
+test('every car has a short recorded announcer line, plus one for a perfect race', () => {
+  for (const card of deck.cards) {
+    assert.equal(card.voice, 'voice/' + card.file.replace('.png', '.mp3'));
+    assert.ok(existsSync(theme + card.voice), `${card.voice} is missing`);
+    assert.ok(statSync(theme + card.voice).size < 60_000, `${card.voice} is too big`);
+  }
+  assert.ok(existsSync(theme + 'voice/perfect-race.mp3'));
+  assert.match(app, /announce\(car\.voice\)/);
+  assert.match(app, /announce\(card\.voice\)/);
+  assert.match(app, /announce\(PERFECT_VOICE\)/);
+  assert.doesNotMatch(celebrate + app, /speechSynthesis/, 'the phone voice cut names short, so it is gone');
+  const build = readFileSync('scripts/build.mjs', 'utf8');
+  assert.match(build, /hot-wheels\/voice/);
+});

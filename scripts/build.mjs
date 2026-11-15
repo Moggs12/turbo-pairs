@@ -10,6 +10,8 @@ await cp('public/themes/hot-wheels/web','dist/themes/hot-wheels/web',{recursive:
 // Flow clips for the match celebration (fetched when a race starts, then kept offline).
 await cp('public/themes/hot-wheels/clips','dist/themes/hot-wheels/clips',{recursive:true});
 await cp('public/themes/hot-wheels/scenes','dist/themes/hot-wheels/scenes',{recursive:true});
+// Recorded announcer lines, one per car plus "Perfect race!" (cached on first use).
+await cp('public/themes/hot-wheels/voice','dist/themes/hot-wheels/voice',{recursive:true});
 const deck=JSON.parse(await readFile('public/themes/hot-wheels/deck.json','utf8'));
 await writeFile('dist/themes/hot-wheels/deck.json',JSON.stringify({...deck,web:'web/'},null,2));
 await cp('public/icons','dist/icons',{recursive:true});
@@ -47,7 +49,7 @@ async function listFiles(directory){
 }
 const shipped=(await listFiles('dist')).map(path=>path.slice('dist/'.length)).filter(path=>!path.startsWith('audio/')).sort();
 // Clips are cached the first time a race uses them, so installing stays light.
-const precached=shipped.filter(path=>!path.startsWith('themes/hot-wheels/clips/')&&!/^themes\/hot-wheels\/scenes\/.*\.mp4$/.test(path));
+const precached=shipped.filter(path=>!path.startsWith('themes/hot-wheels/clips/')&&!path.startsWith('themes/hot-wheels/voice/')&&!/^themes\/hot-wheels\/scenes\/.*\.mp4$/.test(path));
 const hash=createHash('sha256');
 for(const path of shipped){hash.update(path);hash.update(await readFile(`dist/${path}`));}
 const release=hash.digest('hex').slice(0,12);
@@ -56,4 +58,4 @@ const versioned=path=>/^src\/.*\.js$/.test(path)||path==='style.css'||path==='sr
 const precache=['./',...precached.filter(path=>path!=='index.html').map(path=>versioned(path)?`${path}?v=${version}`:path),'index.html'];
 const template=await readFile('scripts/sw-template.js','utf8');
 await writeFile('dist/sw.js',template.replace("'__RELEASE__'",JSON.stringify(release)).replace('__PRECACHE__',JSON.stringify(precache,null,1)));
-console.log(`Built Hot Wheels release ${release} in dist (${precached.length} files kept for offline play, clips cached on first use)`);
+console.log(`Built Hot Wheels release ${release} in dist (${precached.length} files kept for offline play, clips and voices cached on first use)`);
