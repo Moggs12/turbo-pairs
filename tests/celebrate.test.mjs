@@ -46,3 +46,12 @@ test('the garage can make any car come to life', () => {
   assert.match(app, /id="play-car"/);
   assert.match(app, /image\.onclick=playCar/);
 });
+
+test('an installed game can never mix an old stylesheet or deck with new code', () => {
+  const build = readFileSync('scripts/build.mjs', 'utf8');
+  const sw = readFileSync('scripts/sw-template.js', 'utf8');
+  assert.match(build, /style\.css\?v=\$\{version\}/);
+  assert.match(build, /DATA_VERSION='\?v=\$\{version\}'/);
+  assert.match(app, /fetch\(u\+DATA_VERSION\)/);
+  assert.match(sw, /\(css\|json\)/); // network-first for stylesheets and data
+});

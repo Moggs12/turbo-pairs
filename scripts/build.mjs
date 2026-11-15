@@ -21,6 +21,7 @@ const {version}=JSON.parse(await readFile('package.json','utf8'));
 const index=await readFile('dist/index.html','utf8');
 await writeFile('dist/index.html',index
  .replace("script.src='src/app.js'",`script.src='src/app.js?v=${version}'`)
+ .replace('<link rel="stylesheet" href="style.css">',`<link rel="stylesheet" href="style.css?v=${version}">`)
  .replace('themes/hot-wheels/00-card-back.png','themes/hot-wheels/web/00-card-back.webp'));
 async function versionModules(directory){
  for(const entry of await readdir(directory,{withFileTypes:true})){
@@ -28,7 +29,7 @@ async function versionModules(directory){
   if(entry.isDirectory())await versionModules(path);
   else if(entry.name.endsWith('.js')){
    const source=await readFile(path,'utf8');
-   await writeFile(path,source.replace(/from (['"])(\.{1,2}\/[^'"]+)\1/g,(_,quote,url)=>`from ${quote}${url}?v=${version}${quote}`));
+   await writeFile(path,source.replace(/from (['"])(\.{1,2}\/[^'"]+)\1/g,(_,quote,url)=>`from ${quote}${url}?v=${version}${quote}`).replace("const DATA_VERSION='';",`const DATA_VERSION='?v=${version}';`));
   }
  }
 }
@@ -50,7 +51,9 @@ const precached=shipped.filter(path=>!path.startsWith('themes/hot-wheels/clips/'
 const hash=createHash('sha256');
 for(const path of shipped){hash.update(path);hash.update(await readFile(`dist/${path}`));}
 const release=hash.digest('hex').slice(0,12);
-const precache=['./',...precached.filter(path=>path!=='index.html').map(path=>/^src\/.*\.js$/.test(path)?`${path}?v=${version}`:path),'index.html'];
+// Versioned files are requested with ?v=, so cache them under that URL.
+const versioned=path=>/^src\/.*\.js$/.test(path)||path==='style.css'||path==='src/config/game.json'||path==='themes/hot-wheels/deck.json';
+const precache=['./',...precached.filter(path=>path!=='index.html').map(path=>versioned(path)?`${path}?v=${version}`:path),'index.html'];
 const template=await readFile('scripts/sw-template.js','utf8');
 await writeFile('dist/sw.js',template.replace("'__RELEASE__'",JSON.stringify(release)).replace('__PRECACHE__',JSON.stringify(precache,null,1)));
 console.log(`Built Hot Wheels release ${release} in dist (${precached.length} files kept for offline play, clips cached on first use)`);

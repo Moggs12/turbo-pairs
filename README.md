@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 023
+# Kaiden’s Turbo Pairs — Build 024
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -131,3 +131,9 @@ All 26 cars now have a Flow clip for the match celebration. The 23 new ones were
 - **Kaiden's Garage.** A gold "Make it go!" button (or tapping the card) plays that car's clip with the same celebration as a match.
 - **Foil card backs.** A slow diagonal shine sweeps across face-down cards, staggered so the board twinkles. It is off for reduced motion.
 - **Perfect race.** After the last pair in a solo race with no wrong guesses, a chequered flag waves and a gold trophy rises in confetti (scenes/perfect-finish.mp4, 5 s, 360p, 5 credits) before the results.
+
+## Build 024: update fix and a forward-only menu loop
+
+Opening an updated game on a phone that had it installed could load the new code with the old stylesheet, because index.html and the scripts were versioned but style.css and deck.json were not, so the offline cache served the old copies. The build now versions style.css, game.json and deck.json (?v=version) and the service worker fetches stylesheets and data network-first with an offline fallback, so every open gets a matching set. A test guards this.
+
+The menu banner loop now uses only the forward-driving part of the race clip (about 3.3 s) and fades back to its start, so the cars never appear to reverse.

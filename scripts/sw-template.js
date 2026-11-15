@@ -37,6 +37,19 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  // Stylesheets and data decide how the game looks and plays, so prefer the
+  // network for them and fall back to the cache offline. Art and clips are
+  // content-addressed by name, so they stay cache-first.
+  if (/\.(css|json)(\?|$)/.test(url.pathname + url.search)) {
+    event.respondWith(
+      fetch(request).then(response => {
+        if (response.ok) { const copy = response.clone(); caches.open(CACHE).then(cache => cache.put(request, copy)); }
+        return response;
+      }).catch(() => caches.match(request, {ignoreSearch: true}))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(request).then(hit => hit || fetch(request).then(response => {
       if (response.ok && response.type === 'basic') {
