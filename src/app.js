@@ -29,6 +29,9 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const audioEngine = createSoundEngine(window.AudioContext || window.webkitAudioContext, () => !!settings.sound);
 const ignition=createIgnitionSound(window.Audio,'audio/start-vroom-k.mp3',()=>!!settings.sound);
 function resetAudio(){audioEngine.reset();ignition.stop();}
+// The announcer reads each car's name from a recording (deck.json "voice").
+const PERFECT_VOICE='voice/perfect-race.mp3';
+function announce(path){if(path)audioEngine.say(base+path);}
 function sound(type) { if(type==='ignition')ignition.play();else audioEngine.play(type); }
 function soundLabel(){ $('#sound').textContent=settings.sound?'🔊 Sound on':'🔇 Sound off';$('#sound').setAttribute('aria-pressed',String(!!settings.sound));}
 $('#sound').onclick=()=>{settings.sound=!settings.sound;save(config.storage.settingsKey,settings);resetAudio();soundLabel();sound('flip');};
@@ -65,11 +68,12 @@ function cardGarage(index=0,racerIndex=0){
   for(const step of [-1,1]){const neighbour=new Image();neighbour.src=art(deck.cards[collectionIndex(index,step,deck.cards.length)].file);}
   // Fetch this car's clip (and its neighbours') so "Make it go!" starts instantly.
   preloadClips([0,-1,1].map(step=>deck.cards[collectionIndex(index,step,deck.cards.length)].clip).filter(Boolean).map(p=>base+p));
+  audioEngine.preload([0,-1,1].map(step=>deck.cards[collectionIndex(index,step,deck.cards.length)].voice).filter(Boolean).map(p=>base+p));
  }
  // Garage: the car comes to life on demand, using the same show as a match.
  let playing=false;
  const playCar=()=>{if(playing)return;const card=deck.cards[index];playing=true;
-  celebrate({name:card.name,image:art(card.file),clip:card.clip?base+card.clip:null,sound:!!settings.sound,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}).then(()=>{playing=false;$('#play-car')?.focus({preventScroll:true});});
+  announce(card.voice);celebrate({name:card.name,image:art(card.file),clip:card.clip?base+card.clip:null,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}).then(()=>{playing=false;$('#play-car')?.focus({preventScroll:true});});
   if(settings.sound)sound('match');};
  $('#play-car').onclick=playCar;image.onclick=playCar;image.style.cursor='pointer';
  const move=step=>{index=collectionIndex(index,step,deck.cards.length);show();};
@@ -109,7 +113,7 @@ function home(){ignition.stop();cancelCountdown();cancelCelebration();celebratin
 }
 function persist(){save(key('session'),game);}
 function scoreHtml(){return `<div class="scores">${game.players.map((p,i)=>`<div class="player racer-${i} ${game.active===i&&game.status==='playing'?'active':''}"><span class="avatar racer-car">${racerImage(p,i)}</span><div>${esc(p.name)}<small>${game.status==='complete'?'PAIRS FOUND':game.active===i?'YOUR TURN':'READY TO RACE'}</small></div><strong>${game.scores[i]}</strong></div>`).join('')}${game.mode==='solo'?`<div class="player solo-stat"><div>Turns<small>FEWER TURNS IS BETTER</small></div><strong>${game.moves}</strong></div>`:''}</div>`;}
-function board(){cancelCountdown();preloadClips([...new Set((game?.deck||[]).map(c=>deck.cards.find(d=>d.id===c.id)?.clip).filter(Boolean))].map(p=>base+p).concat(game?.mode==='solo'?[base+'scenes/perfect-finish.mp4']:[]));boardObserver.disconnect();if(!document.querySelector(".race"))window.scrollTo(0,0);paused=false;const difficulty=config.difficulties.find(d=>d.id===game.difficultyId);app.innerHTML=`<section class="race"><div class="racebar"><h2>${esc(difficulty?.label||'Custom')} race <span class="eyebrow">${modeLabels[game.mode||'two']}</span></h2><div class="actions"><button id="pause" class="quiet">Ⅱ Pause</button><button id="garage" class="quiet">⌂ Menu</button></div></div>${scoreHtml()}<p class="turn" role="status" aria-live="polite">${game.revealed.length===2?'Same cars? Let’s see…':game.mode==='ai'&&game.active===1?'Turbo Bot is thinking…':`${esc(game.players[game.active].name)}, your turn!`}</p><div class="board-space"><div class="board ${game.pairCount===3?'easy':game.pairCount===6?'medium':'hard'}" aria-label="Memory cards">${game.deck.map((c,i)=>{const matched=game.matched.includes(c.id),open=matched||game.revealed.includes(i);return `<button class="card ${open?'open':''} ${matched?'matched':''}" data-card="${i}" aria-label="${open?esc(c.name)+(matched?', matched':''): `Face-down card ${i+1}`}" ${matched||(game.mode==='ai'&&game.active===1)?'disabled':''}><span class="inner"><img src="${art(deck.back)}" alt="" draggable="false"><img class="front" src="${art(c.file)}" alt="" draggable="false"></span></button>`;}).join('')}</div></div><p class="race-note"><span class="progress-track"><span style="width:${game.matched.length/game.pairCount*100}%"></span></span><span class="pair-count">⭐ ${game.matched.length} / ${game.pairCount} pairs found</span></p></section>`;
+function board(){cancelCountdown();audioEngine.preload([...new Set((game?.deck||[]).map(c=>deck.cards.find(d=>d.id===c.id)?.voice).filter(Boolean))].concat(game?.mode==='solo'?[PERFECT_VOICE]:[]).map(p=>base+p));preloadClips([...new Set((game?.deck||[]).map(c=>deck.cards.find(d=>d.id===c.id)?.clip).filter(Boolean))].map(p=>base+p).concat(game?.mode==='solo'?[base+'scenes/perfect-finish.mp4']:[]));boardObserver.disconnect();if(!document.querySelector(".race"))window.scrollTo(0,0);paused=false;const difficulty=config.difficulties.find(d=>d.id===game.difficultyId);app.innerHTML=`<section class="race"><div class="racebar"><h2>${esc(difficulty?.label||'Custom')} race <span class="eyebrow">${modeLabels[game.mode||'two']}</span></h2><div class="actions"><button id="pause" class="quiet">Ⅱ Pause</button><button id="garage" class="quiet">⌂ Menu</button></div></div>${scoreHtml()}<p class="turn" role="status" aria-live="polite">${game.revealed.length===2?'Same cars? Let’s see…':game.mode==='ai'&&game.active===1?'Turbo Bot is thinking…':`${esc(game.players[game.active].name)}, your turn!`}</p><div class="board-space"><div class="board ${game.pairCount===3?'easy':game.pairCount===6?'medium':'hard'}" aria-label="Memory cards">${game.deck.map((c,i)=>{const matched=game.matched.includes(c.id),open=matched||game.revealed.includes(i);return `<button class="card ${open?'open':''} ${matched?'matched':''}" data-card="${i}" aria-label="${open?esc(c.name)+(matched?', matched':''): `Face-down card ${i+1}`}" ${matched||(game.mode==='ai'&&game.active===1)?'disabled':''}><span class="inner"><img src="${art(deck.back)}" alt="" draggable="false"><img class="front" src="${art(c.file)}" alt="" draggable="false"></span></button>`;}).join('')}</div></div><p class="race-note"><span class="progress-track"><span style="width:${game.matched.length/game.pairCount*100}%"></span></span><span class="pair-count">⭐ ${game.matched.length} / ${game.pairCount} pairs found</span></p></section>`;
  fitBoard();boardObserver.observe(document.querySelector('.board-space'));
  app.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>playCard(Number(b.dataset.card)));
  $('#pause').onclick=()=>{cancelCelebration();cancelCountdown();resetAudio();updateBoard();if(game.status==='complete'){finish();return;}clearTimeout(timer);paused=true;overlay('Pit stop','A little break. Ready to play again?',[{label:'▶ Keep playing',action:()=>{board();schedule();}}]);};$('#garage').onclick=home;
@@ -187,14 +191,14 @@ function playCard(index,bot=false){
   const car=deck.cards.find(c=>c.id===matchId),raceId=game.id;
   if(car){
    clearTimeout(timer);celebrating=true;
-   celebrate({name:car.name,image:art(car.file),clip:car.clip?base+car.clip:null,sound:!!settings.sound,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}).then(()=>{
+   announce(car.voice);celebrate({name:car.name,image:art(car.file),clip:car.clip?base+car.clip:null,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}).then(()=>{
     celebrating=false;
     if(paused||game?.id!==raceId||!app.querySelector('.race'))return;
     if(game.status==='complete'){
      clearTimeout(timer);
      const done=()=>{if(game?.id===raceId&&game?.status==='complete'&&app.querySelector('.race'))finish();};
      // A race with no wrong guesses earns the chequered flag before the results.
-     if(game.mode==='solo'&&starRating(game.pairCount,game.moves).perfect){celebrating=true;celebrate({name:'Perfect race',image:art(deck.back),clip:base+'scenes/perfect-finish.mp4',sound:!!settings.sound,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}).then(()=>{celebrating=false;if(!paused)done();});}
+     if(game.mode==='solo'&&starRating(game.pairCount,game.moves).perfect){celebrating=true;announce(PERFECT_VOICE);celebrate({name:'Perfect race',image:art(deck.back),clip:base+'scenes/perfect-finish.mp4',reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}).then(()=>{celebrating=false;if(!paused)done();});}
      else timer=setTimeout(done,250);
     }
     else schedule();

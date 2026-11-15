@@ -105,3 +105,26 @@ test('countdown has three short tones and a longer GO; swoosh and rev use noise'
  const before=ctx.starts;audio.play('flip');assert.equal(ctx.starts,before+1);
  audio.play('match');assert.equal(ctx.starts,before+5);
 });
+
+test('announcer lines are recorded files played to the end, never speech synthesis',async()=>{
+ const fetched=[];
+ globalThis.fetch=async url=>{fetched.push(url);return {ok:true,arrayBuffer:async()=>new ArrayBuffer(8)};};
+ class VoiceContext extends FakeContext{
+  constructor(){super();this.decodes=0;this.played=[];}
+  decodeAudioData(data,ok){this.decodes++;ok({duration:1.5,bytes:data.byteLength});}
+  createBufferSource(){const ctx=this;const s={connect(){},start(){ctx.played.push(s.buffer);},stop(){s.stopped=true;}};return s;}
+  createGain(){return {gain:{value:1,setValueAtTime(){},exponentialRampToValueAtTime(){}},connect(){}};}
+ }
+ let on=true;
+ const audio=createSoundEngine(VoiceContext,()=>on);
+ audio.preload(['v/a.mp3','v/a.mp3','v/b.mp3']);
+ assert.deepEqual(fetched,['v/a.mp3','v/b.mp3'],'each line is fetched once');
+ audio.say('v/a.mp3');await new Promise(r=>setTimeout(r,0));
+ audio.say('v/a.mp3');await new Promise(r=>setTimeout(r,0));
+ const ctx=FakeContext.instances.at(-1);
+ assert.equal(ctx.played.length,2);
+ assert.equal(ctx.decodes,1,'a line is decoded once per audio context');
+ on=false;audio.say('v/b.mp3');await new Promise(r=>setTimeout(r,0));
+ assert.equal(ctx.played.length,2,'sound off keeps the announcer quiet');
+ delete globalThis.fetch;
+});

@@ -1,4 +1,4 @@
-# Kaiden’s Turbo Pairs — Build 024
+# Kaiden’s Turbo Pairs — Build 025
 
 First playable Hot Wheels release: two racers sharing one device. Uses all 26 approved Deck 001 fronts and the shared back unchanged. Mystic Creatures is deferred and excluded from the release output.
 
@@ -137,3 +137,9 @@ All 26 cars now have a Flow clip for the match celebration. The 23 new ones were
 Opening an updated game on a phone that had it installed could load the new code with the old stylesheet, because index.html and the scripts were versioned but style.css and deck.json were not, so the offline cache served the old copies. The build now versions style.css, game.json and deck.json (?v=version) and the service worker fetches stylesheets and data network-first with an offline fallback, so every open gets a matching set. A test guards this.
 
 The menu banner loop now uses only the forward-driving part of the race clip (about 3.3 s) and fades back to its start, so the cars never appear to reverse.
+
+## Build 025: a real announcer voice
+
+When a pair is found, a recorded announcer now calls out the car's name instead of the phone's built-in speech, which sounded different on every device and was often cut short (the old code cancelled speech just before speaking, which WebKit can truncate). Each of the 26 cars has its own line, plus "Perfect race!" for the chequered flag, recorded with Runway text-to-speech in a big American announcer voice (themes/hot-wheels/voice/, about 25 KB and 1.5 s each, 710 KB in all).
+
+The lines play through the game's Web Audio context, which the first tap has already unlocked, so they start on time and always finish. They are fetched when a race starts (and for the car you are looking at in the garage), decoded once, kept by the offline cache after first use, and stay quiet when sound is off.
